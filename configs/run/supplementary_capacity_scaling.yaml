@@ -1,0 +1,23 @@
+inherit: primary.yaml
+run:
+  name: supplementary_capacity_scaling
+  kind: supplementary
+  title: Scaling behaviour of the twin and of the platform
+  group: D
+panel_a:
+  dimension_sweep: [8, 16, 32, 64, 128]
+  holding: calibration_frozen
+  errors_are: held_out_one_shot_state_estimates
+  report: [parameter_count, flops_millions, matrix_rmse, activation_rmse, albumin_rmse, fit_time_minutes]
+  power_law_fit_over: [8, 64]
+  undamped_rows: [32, 64]
+panel_b:
+  footprints_modules: [4, 8, 12]
+  chips_total: 260
+  report: [simultaneous_chips, batches_required, culture_weeks, turnaround_weeks, calendar_weeks_with_contingency, chips_per_week]
+  crossing_constraint: batch_crossed_with_three_levels_of_state_and_time
+per_stage_budget:
+  pooled_calibration_fit: {bootstrap_replicates: 2000}
+  exchange_search_statistic: median_exchange_steps
+  forecast_cost_unit: ms_per_chip_per_horizon
+  loop_stage_sum_must_equal_closed_loop_time: true

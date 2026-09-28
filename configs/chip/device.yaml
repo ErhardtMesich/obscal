@@ -1,0 +1,41 @@
+device:
+  # Stacked two-channel organ chip. Tissue channel reproduces the lobule-like unit
+  # of the in-venue precedent; electrodes are substrate-integrated thin-film pairs.
+  tissue_channel:
+    unit_shape: hexagon
+    unit_face_width_um: 1000.0
+    central_lumen_um: 300.0
+    microneedle_inlet_um: 200.0
+    channel_height_um: 250.0
+    channel_length_mm: 12.0
+  perfusion_channel:
+    channel_height_um: 250.0
+    flow_rate_uL_per_h: 30.0
+    devices_per_reservoir: 12
+    drive: pressure_manifold
+  electrodes:
+    integration: substrate_integrated
+    metal: gold
+    tissue_channel_count: 4
+    perfusion_channel_count: 1
+    reference_layout: development
+  held_out_geometry:
+    channel_height_um: 400.0
+    role: instrument_level_external_test
+    devices: 12
+
+gates:
+  # Pre-seeding acceptance rules. Both are withdrawn under the pre-declared
+  # inclusion rules rather than corrected after seeding.
+  leak_pressure_decay_per_min: 0.05
+  cell_free_spectrum_sd_gate: 3.0
+  seeding_coverage_band: [0.82, 0.96]
+  electrode_drift_ohm_per_day_gate: 15.0
+  half_mass_ratio_band: [0.4, 0.6]
+  hydroxyproline_quantification_floor_ug: 0.18
+
+perfusion_contrast:
+  # Platform-validation arm: the same culture on a static counterpart.
+  devices_static: 36
+  paired_arms: ["S2", "S4"]
+  endpoint: deposited_matrix

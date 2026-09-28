@@ -1,0 +1,26 @@
+release root           : obscal
+run                    : primary (primary)
+
+checks by family
+family      PASS  FAIL  NOT_RUN  BLOCKED
+----------  ----  ----  -------  -------
+claim       15    0     0        0      
+execution   100   0     0        0      
+gate        5     0     0        0      
+hygiene     16    0     0        0      
+manuscript  266   2     2        0      
+provenance  2     0     1        0      
+
+overall status                             : PARTIALLY_VERIFIED
+code status (manuscript family excluded)   : PARTIALLY_VERIFIED
+checks run                                 : 409
+manuscript discrepancies                   : 2
+claims mapped                              : 15
+deviations registered                      : 12
+
+failures
+check                                                                family      expected                               observed                                               
+-------------------------------------------------------------------  ----------  -------------------------------------  -------------------------------------------------------
+acellular ladder column is reproducible from one design coefficient  manuscript  one coefficient fitting all four rows  {'0.40': 0.0402, '0.55': 0.0, '0.80': 0.0, '1.50': 0.0}
+activation attenuation is a value at the spread achieved             manuscript  0.89                                   0.82                                                   
+

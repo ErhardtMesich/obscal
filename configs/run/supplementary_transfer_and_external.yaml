@@ -1,0 +1,35 @@
+inherit: primary.yaml
+run:
+  name: supplementary_transfer_and_external
+  kind: supplementary
+  title: Transfer, external resources and modality fusion
+  group: D
+panel_a:
+  reference: held_out_chips_same_batch
+  shifts: [held_out_operator, held_out_batch, cross_treatment_source, held_out_geometry, cross_hepatocyte_line]
+  metric: matrix_axis_rmse
+panel_b:
+  resources:
+    - name: GSE175396
+      role: phenotype_anchor
+      cannot: no_fibrogenic_cell_single_timepoint
+    - name: GSE63859
+      role: independent_external
+      cannot: transcriptomic_only_no_electrical_channel
+    - name: held_out_geometry
+      role: instrument_test
+      cannot: same_laboratory_and_operators
+    - name: public_chip_impedance_set
+      role: calibration_test
+      cannot: none_found_so_none_used
+  report_absence_row: true
+panel_c:
+  front_end_configurations:
+    - name: electrical_only
+      features: 3
+    - name: electrical_and_optical
+      features: 4
+    - name: full_front_end
+      features: 5
+  columns: [in_distribution_agreement, held_out_geometry_agreement]
+  never_average_the_two_columns: true

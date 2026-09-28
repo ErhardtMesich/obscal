@@ -1,0 +1,12 @@
+# Runtime pins for the ObsCal calibration and allocation release.
+numpy==2.4.3
+scipy==1.17.1
+torch==2.11.0
+PyYAML==6.0.2
+
+# Development and gate tooling.
+pytest==8.4.2
+mypy==1.18.2
+ruff==0.14.2
+black==25.9.0
+isort==6.1.0

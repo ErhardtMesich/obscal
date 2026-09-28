@@ -1,0 +1,10 @@
+inherit: primary.yaml
+run:
+  name: ablation_no_cell_free_channel
+  kind: ablation
+  title: Without the artefact-confound control
+  component_removed: cell_free_channel
+  substitute: cell_free_channel_omitted
+  diagnostic: cell_free_channel_alone_predicts_culture_day
+toggles:
+  artefact_confound_channel: false

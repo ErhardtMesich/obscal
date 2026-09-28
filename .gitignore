@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Tool caches. Anchored so the source package directories are never excluded.
+/.mypy_cache/
+/.pytest_cache/
+/.ruff_cache/
+/.hypothesis/
+/.coverage
+/htmlcov/
+
+# Harness outputs. Anchored to the repository root; the package's own
+# src/obscal/cohort module and configs/cohort entries are tracked.
+/artefacts/
+/runs/
+/cohort/
+/checkpoints/
+*.tmp
+.tmp_*

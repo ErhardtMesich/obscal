@@ -1,0 +1,22 @@
+ObsCal 7-point excitation grid and per-band role
+================================================
+Each frequency sits where a distinct equivalent-circuit element dominates the
+spectrum, so the grid is deliberately uneven rather than logarithmically spaced.
+The single-frequency comparator channel is 12.5 Hz and is reported as
+transepithelial electrical resistance only, never as a state estimate.
+
+band        frequency     dominant element                 role in the fit
+----------  ------------  -------------------------------  ---------------------------
+very low    100 Hz        electrode interface (CPE)        interface magnitude and exponent
+low         500 Hz        extracellular / barrier R        matrix-axis resistive band
+low         1 kHz         extracellular / barrier R        matrix-axis resistive band
+mid         4 kHz         barrier R with membrane C        transition
+mid         10 kHz        membrane capacitance             cell-number-sensitive
+high        40 kHz        coverage-dominated               coverage band
+very high   100 kHz       series lead and interface        high-frequency roll-off
+
+Sweep cadence 30 min, fitted to the equivalent circuit, geometric correction
+applied from the printed device geometry and never refitted per device,
+timepoint or arm. Waveform, amplitude and frequency set are fixed for the life
+of the study and the residual excitation-shape offset is carried as a bounded
+systematic rather than corrected away.

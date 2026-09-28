@@ -1,0 +1,12 @@
+inherit: primary.yaml
+run:
+  name: ablation_undamped_backbone
+  kind: ablation
+  title: Without the damped oscillatory backbone
+  component_removed: energy_dissipation_term
+  substitute: undamped_oscillatory_backbone
+  diagnostic: error_against_persistence_at_the_seven_day_activation_horizon
+toggles:
+  damping: false
+twin:
+  damping: false

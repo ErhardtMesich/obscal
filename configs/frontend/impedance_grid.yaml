@@ -1,0 +1,59 @@
+sweep:
+  # Multi-frequency sweep, never a single-frequency resistance. Each frequency
+  # sits where a distinct circuit element dominates the spectrum.
+  frequencies_hz: [100.0, 500.0, 1000.0, 4000.0, 10000.0, 40000.0, 100000.0]
+  cadence_minutes: 30
+  waveform: sinusoidal
+  waveform_fixed_for_study: true
+  amplitude_fixed_for_study: true
+  frequency_set_fixed_for_study: true
+  sampling_interval_minutes: 30
+
+equivalent_circuit:
+  # R_ext + (Rb || Cm) + interface CPE (magnitude Q, exponent alpha).
+  elements: [extracellular_resistance, barrier_resistance, membrane_capacitance, cpe_magnitude, cpe_exponent]
+  free_parameters: 5
+  real_quantities_per_sweep: 14
+  lack_of_fit_dof: 9
+  alpha_bounds: [0.0, 1.0]
+  fit_observables: [real_part, imaginary_part]
+  residual_weighting: unit_scale
+  geometric_correction:
+    applied: true
+    refit_per_device: false
+    refit_per_timepoint: false
+    refit_per_arm: false
+
+comparator:
+  # Single-frequency reading survives only as the comparator channel.
+  frequency_hz: 12.5
+  reported_as: transepithelial_electrical_resistance
+  reported_as_state_estimate: false
+
+resolvable_change:
+  # No literature drift value is adopted: the threshold is 3 times the blank
+  # drift measured on the matching interval.
+  multiple_of_measured_blank_drift: 3.0
+  interval_days: 14
+  drift_components: [continuous_drift, medium_exchange_step]
+  excitation_bias_carried_as: bounded_systematic
+
+optical:
+  features: [electrode_area_coverage, matrix_texture_index]
+  cadence_minutes: 30
+  coverage_unit: percent_of_electrode_area
+  texture_unit: dimensionless_x1e-3
+
+effluent:
+  feature: pro_collagen_Ialpha1
+  unit: ng_per_mL
+  coverage_driven: false
+
+covariates_logged:
+  - temperature
+  - medium_change_indicator
+  - hours_since_electrode_wetting
+  - perfusion_state
+  - batch
+  - operator
+  - geometry

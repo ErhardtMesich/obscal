@@ -1,0 +1,10 @@
+inherit: primary.yaml
+run:
+  name: ablation_whole_chip_lysis
+  kind: ablation
+  title: Without split-chip replication
+  component_removed: split_chip_half_reads
+  substitute: one_half_read_per_device
+  diagnostic: lambda_unidentifiable
+toggles:
+  split_chip_replication: false

@@ -1,0 +1,15 @@
+inherit: primary.yaml
+run:
+  name: supplementary_source_generalization
+  kind: supplementary
+  title: Mesenchymal stromal cell source as a generalization axis
+  group: D
+culture_day: 21
+panel_a:
+  arms: [S1, S2, S4, S5, S6]
+  report: [hydroxyproline, collagen_area, acta2, col1a1, pro_collagen]
+  confound_carried_with_statement: mesenchymal_stromal_preparations_contain_COL1A1
+panel_b:
+  invariance_test: matrix_slope_on_barrier_resistance
+  subsets: [bone_marrow_arms, umbilical_cord_arms]
+  report_power_limitation: true

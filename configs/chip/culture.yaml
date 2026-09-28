@@ -1,0 +1,73 @@
+culture:
+  # Culture day 0 is the day the co-culture is complete. Injury runs culture
+  # day 3 to day 7; treatment begins at culture day 7, so the pre-specified
+  # primary endpoint (day 14 of treatment) falls at culture day 21.
+  seeding:
+    stellate_seeding_day: -1
+    hepatocyte_seeding_day: 0
+    hepatocyte_to_stellate_ratio: 4.0
+    membrane_coating: type_I_collagen
+  injury:
+    start_culture_day: 3
+    end_culture_day: 7
+    exposure_hours: 96
+    ethanol_mM: 100.0
+    acetaldehyde_uM: 100.0
+    ethanol_outlet_measured: true
+    acetaldehyde_outlet_measured: false
+  treatment:
+    start_culture_day: 7
+    days: 14
+  timepoints:
+    primary_endpoint_culture_day: 21
+    primary_endpoint_treatment_day: 14
+    exploratory_culture_day: 28
+    exploratory_load_bearing: false
+  effluent_sampling_hours: 48
+  assay_chain:
+    matrix_primary: hydroxyproline
+    matrix_primary_method: LC_MSMS
+    matrix_primary_working_range_ug_per_chip: [0.18, 24.0]
+    matrix_paired: collagen_proportionate_area
+    matrix_paired_format: polarised_light_whole_section
+    matrix_readers: 2
+    matrix_readers_blinded_to_arm: true
+    activation_panel: [ACTA2, COL1A1]
+    activation_reference_genes: 3
+    activation_aliquot: pooled_from_both_half_lysates
+    function_defended: albumin
+    function_declared_declining_from_culture_day: 21
+    function_declining: urea
+    normaliser: none
+  biology:
+    stellate_line: LX-2
+    stellate_passage_window: [6, 12]
+    stellate_lots: 2
+    parenchymal_line: Hep_G2
+    parenchymal_passage_window: [8, 16]
+    parenchymal_lots: 2
+    cross_line_hepatocyte: Huh7
+    cross_line_devices: 12
+    stromal_sources: [bone_marrow, umbilical_cord]
+    stromal_passage_window: [3, 6]
+    stromal_lots_per_source: 2
+    second_stellate_line: unavailable
+  medium_policy:
+    one_lot_per_run: true
+    lot_constant_within_run: true
+    devices_per_reservoir: 12
+    medium_change_indicator_modelled: true
+
+batching:
+  batches: 3
+  operators: 2
+  batch_crossed_with: [state, time]
+  devices_total: 260
+  devices_on_21_day_schedule: 216
+  devices_analysed: 215
+  devices_withdrawn: 45
+  calendar_weeks: 14
+  module_footprint:
+    deployed_modules: 8
+    simultaneous_devices: 96
+  seed_source: 260

@@ -1,0 +1,12 @@
+inherit: primary.yaml
+run:
+  name: ablation_pooled_strata
+  kind: ablation
+  title: Without the treatment-stratified calibration
+  component_removed: per_stratum_fit
+  substitute: arms_pooled_into_one_fit
+  diagnostic: cell_only_matrix_offset_absorbed_into_the_intercept
+toggles:
+  treatment_stratified_calibration: false
+calibration:
+  strata: single

@@ -1,0 +1,15 @@
+inherit: primary.yaml
+run:
+  name: ablation_sham_interrogation
+  kind: ablation
+  title: Without the commanded flow-step excitation
+  component_removed: commanded_flow_step
+  substitute: sham_interrogation_arm
+  diagnostic: terminal_panels_of_probed_and_probe_free_devices
+toggles:
+  commanded_flow_step_excitation: false
+analyses:
+  - name: contrast
+    contrast: probed_against_probe_free
+    endpoint: hydroxyproline
+    test: welch_t

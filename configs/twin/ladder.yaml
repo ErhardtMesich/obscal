@@ -1,0 +1,33 @@
+rungs:
+  # Every rung meets the same held-out splits, per axis. The two fibrosis
+  # readouts are independently regulated, so a pooled error would average across
+  # axes the literature reports moving differently.
+  - name: persistence
+    kind: last_value
+    stochastic_initialisation: false
+  - name: arima_110
+    kind: arima
+    order: [1, 1, 0]
+    stochastic_initialisation: false
+  - name: mechanistic
+    kind: mechanistic_recurrence
+    stochastic_initialisation: true
+  - name: without_damping
+    kind: oscillatory_state_space
+    damping: false
+    stochastic_initialisation: true
+  - name: obscal_twin
+    kind: damped_oscillatory_state_space
+    damping: true
+    stochastic_initialisation: true
+
+scoring:
+  axes: [activation, matrix]
+  pooled_across_axes: false
+  primary_unit_matrix: ug_hydroxyproline_per_chip
+  primary_unit_activation: fold_change
+  reference_rung: persistence
+  reference_value_by_construction: 1.00
+  ratio_reported_with_margin: true
+  coverage_estimated_empirically: true
+  held_out_splits_identical_across_rungs: true

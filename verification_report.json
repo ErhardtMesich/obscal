@@ -1,0 +1,5180 @@
+{
+  "release_root": "obscal",
+  "run": {
+    "name": "primary",
+    "kind": "primary",
+    "title": "ObsCal delivered configuration",
+    "seed": 20260928
+  },
+  "cohort": {
+    "provenance": "schema_compatible_device_pool",
+    "devices": 260,
+    "retained": 213,
+    "withdrawn": 47,
+    "blocks": {
+      "biological": 148,
+      "acellular_ladder": 24,
+      "coverage_ladder": 20,
+      "cell_free": 8,
+      "held_out_geometry": 12,
+      "cross_line": 12,
+      "static_counterpart": 36
+    },
+    "arms": {
+      "S1": 12,
+      "S2": 62,
+      "S3": 28,
+      "S4": 62,
+      "S5": 32,
+      "S6": 12,
+      "L0": 24,
+      "CL": 20,
+      "CF": 8
+    }
+  },
+  "toggles_removed": [],
+  "summary": {
+    "PASS": 404,
+    "FAIL": 2,
+    "NOT_RUN": 3,
+    "BLOCKED": 0,
+    "total": 409,
+    "overall_status": "PARTIALLY_VERIFIED",
+    "code_status": "PARTIALLY_VERIFIED",
+    "manuscript_discrepancies": 2
+  },
+  "interpretation": "A failing check in the manuscript family is a discrepancy inside the article's own printed tables, not a defect in this release. Every cohort-level quantity below is the release's own on its harness device pool, because the article deposits no per-device rows and no executable implementation.",
+  "checks": [
+    {
+      "check": "arm totals sum to the biological block",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 148.0,
+      "observed": 148.0,
+      "detail": "Table S7 arm totals 12+32+28+32+32+12",
+      "evidence": {
+        "tolerance": 0.5,
+        "arm_totals": {
+          "S1": 12,
+          "S2": 32,
+          "S3": 28,
+          "S4": 32,
+          "S5": 32,
+          "S6": 12
+        }
+      }
+    },
+    {
+      "check": "biological block plus both ladders is the full design",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 192.0,
+      "observed": 192.0,
+      "detail": "Table S9 Panel B, 148 + 24 + 20",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "every chip block sums to the 260-device pool",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 260.0,
+      "observed": 260.0,
+      "detail": "Table 1, Table 6 and the static contrast must partition the pool",
+      "evidence": {
+        "tolerance": 0.5,
+        "blocks": {
+          "full_design": 192,
+          "cell_free": 8,
+          "held_out_geometry": 12,
+          "cross_line": 12,
+          "static_counterpart": 36
+        }
+      }
+    },
+    {
+      "check": "fit and held-out devices are the biological block",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 148.0,
+      "observed": 148.0,
+      "detail": "116 pooled plus 32 held out",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "withdrawal classes sum to the withdrawn total",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 45.0,
+      "observed": 45.0,
+      "detail": "SI Table S14 counts",
+      "evidence": {
+        "tolerance": 0.5,
+        "classes": {
+          "bubble_occlusion": 14,
+          "seeding_confluence_outside_band": 9,
+          "channel_leak": 7,
+          "electrode_drift_above_threshold": 5,
+          "unequal_terminal_split": 6,
+          "hydroxyproline_below_quantification": 4
+        }
+      }
+    },
+    {
+      "check": "withdrawn share of the pool",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 17.3,
+      "observed": 17.3,
+      "detail": "45 of 260",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "analysed devices",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 215.0,
+      "observed": 215.0,
+      "detail": "260 less 45",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "the devices off the 21-day schedule are exactly the two ladders",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 44.0,
+      "observed": 44.0,
+      "detail": "260 less the 216 on the 21-day schedule",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "plug-in covariance inflation",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.064,
+      "observed": 1.064,
+      "detail": "Nbio/(Nbio - p - 2) at p = 5 and 116 biological devices",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "residual degrees of freedom of one sweep fit",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 9.0,
+      "observed": 9.0,
+      "detail": "14 real quantities from 7 complex readings less 5 free parameters",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "sensor dimension alternatives and their inflation",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.115,
+      "observed": 1.115,
+      "detail": "Table S12 sensor-dimension row at p = 10",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (log_rb, activation)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.9,
+      "observed": 2.9,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.89,
+        "naive": 2.6
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (log_cm, activation)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -4.3,
+      "observed": -4.3,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.89,
+        "naive": -3.8
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (alpha, activation)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -4.6,
+      "observed": -4.6,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.89,
+        "naive": -4.1
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (matrix_texture, activation)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 7.0,
+      "observed": 7.0,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.89,
+        "naive": 6.2
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (effluent_pro_collagen, activation)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 21.0,
+      "observed": 21.0,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.89,
+        "naive": 18.7
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (log_rb, matrix)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 4.3,
+      "observed": 4.3,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.92,
+        "naive": 4.0
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (log_cm, matrix)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -1.2,
+      "observed": -1.2,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.92,
+        "naive": -1.1
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (alpha, matrix)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -8.6,
+      "observed": -8.6,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.92,
+        "naive": -7.9
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (matrix_texture, matrix)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 23.3,
+      "observed": 23.3,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.92,
+        "naive": 21.4
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (effluent_pro_collagen, matrix)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 6.8,
+      "observed": 6.8,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.92,
+        "naive": 6.3
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (log_rb, coverage)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 12.8,
+      "observed": 12.8,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.97,
+        "naive": 12.4
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (log_cm, coverage)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -9.9,
+      "observed": -9.9,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.97,
+        "naive": -9.6
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (alpha, coverage)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -5.4,
+      "observed": -5.4,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.97,
+        "naive": -5.2
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (matrix_texture, coverage)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 10.1,
+      "observed": 10.1,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.97,
+        "naive": 9.8
+      }
+    },
+    {
+      "check": "corrected slope equals naive over lambda (effluent_pro_collagen, coverage)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.0,
+      "observed": 2.0,
+      "detail": "Naive slopes divide by the per-axis attenuation factor",
+      "evidence": {
+        "tolerance": 0.05,
+        "lambda": 0.97,
+        "naive": 1.9
+      }
+    },
+    {
+      "check": "correction moves every negative slope away from zero",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": true,
+      "observed": true,
+      "detail": "dividing by a factor below one must enlarge the magnitude",
+      "evidence": {
+        "n_negative_slopes": 6
+      }
+    },
+    {
+      "check": "slope cells clearing zero unadjusted",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 13.0,
+      "observed": 13.0,
+      "detail": "the 15 cells form one test family",
+      "evidence": {
+        "tolerance": 0.5,
+        "clearing": [
+          "log_rb:activation",
+          "log_cm:activation",
+          "alpha:activation",
+          "matrix_texture:activation",
+          "effluent_pro_collagen:activation",
+          "log_rb:matrix",
+          "alpha:matrix",
+          "matrix_texture:matrix",
+          "effluent_pro_collagen:matrix",
+          "log_rb:coverage",
+          "log_cm:coverage",
+          "alpha:coverage",
+          "matrix_texture:coverage"
+        ]
+      }
+    },
+    {
+      "check": "Holm step-down retains the printed number of slopes",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 11.0,
+      "observed": 11.0,
+      "detail": "Holm at P < 0.05 over the 15-cell family",
+      "evidence": {
+        "tolerance": 0.5,
+        "retained": [
+          "effluent_pro_collagen:activation",
+          "log_rb:matrix",
+          "matrix_texture:matrix",
+          "log_rb:coverage",
+          "log_cm:coverage",
+          "alpha:coverage",
+          "matrix_texture:coverage",
+          "alpha:matrix",
+          "log_cm:activation",
+          "effluent_pro_collagen:matrix",
+          "matrix_texture:activation"
+        ]
+      }
+    },
+    {
+      "check": "Holm drops exactly the printed activation slopes among those clearing zero",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": [
+        "alpha:activation",
+        "log_rb:activation"
+      ],
+      "observed": [
+        "alpha:activation",
+        "log_rb:activation"
+      ],
+      "detail": "the two activation slopes on barrier resistance and on the constant-phase exponent are the only cells that clear zero unadjusted and fail Holm",
+      "evidence": {
+        "all_holm_dropped": [
+          "log_rb:activation",
+          "alpha:activation",
+          "log_cm:matrix",
+          "effluent_pro_collagen:coverage"
+        ]
+      }
+    },
+    {
+      "check": "band information share at 100 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 14.4,
+      "observed": 14.4,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.210173
+      }
+    },
+    {
+      "check": "band information share at 500 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 32.8,
+      "observed": 32.7,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.304373
+      }
+    },
+    {
+      "check": "band information share at 1000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 28.3,
+      "observed": 28.3,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.28327
+      }
+    },
+    {
+      "check": "band information share at 4000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 10.9,
+      "observed": 10.9,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.187561
+      }
+    },
+    {
+      "check": "band information share at 10000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 5.1,
+      "observed": 5.1,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.142566
+      }
+    },
+    {
+      "check": "band information share at 40000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.3,
+      "observed": 2.3,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.110986
+      }
+    },
+    {
+      "check": "band information share at 100000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 6.2,
+      "observed": 6.2,
+      "detail": "share of the total matrix-axis design information",
+      "evidence": {
+        "tolerance": 0.152008
+      }
+    },
+    {
+      "check": "single-band information shares sum to 100",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 100.0,
+      "observed": 100.0,
+      "detail": "the seven bands partition the matrix-axis information",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "resistive band carries the printed share of the matrix information",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 61.1,
+      "observed": 61.1,
+      "detail": "500 Hz to 1 kHz band",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 100 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 3.9,
+      "observed": 3.9,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 500 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 3.3,
+      "observed": 3.3,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 1000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 4.7,
+      "observed": 4.7,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 4000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 10.9,
+      "observed": 10.9,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 10000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 20.8,
+      "observed": 20.8,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 40000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 41.8,
+      "observed": 41.8,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 100000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 13.1,
+      "observed": 13.1,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "coverage-to-matrix ratio at 0 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 7.4,
+      "observed": 7.4,
+      "detail": "printed ratio against the two printed standardised sensitivities",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "fused front-end coverage-to-matrix ratio",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 7.4,
+      "observed": 7.4,
+      "detail": "8.12 over 1.09 on the fused 5-feature front end",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "agreement row rebuilt from its own printed inputs (estimated_matrix_vs_hydroxyproline)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 36.9,
+      "observed": 36.9,
+      "detail": "root mean square of the paired difference",
+      "evidence": {
+        "tolerance": 0.05,
+        "bias": 0.06,
+        "loa": [
+          -1.38,
+          1.5
+        ]
+      }
+    },
+    {
+      "check": "agreement row rebuilt from its own printed inputs (estimated_matrix_vs_collagen_area)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 35.9,
+      "observed": 35.9,
+      "detail": "root mean square of the paired difference",
+      "evidence": {
+        "tolerance": 0.05,
+        "bias": -0.11,
+        "loa": [
+          -2.94,
+          2.72
+        ]
+      }
+    },
+    {
+      "check": "agreement row rebuilt from its own printed inputs (estimated_activation_vs_acta2)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 20.1,
+      "observed": 20.1,
+      "detail": "root mean square of the paired difference",
+      "evidence": {
+        "tolerance": 0.05,
+        "bias": 0.03,
+        "loa": [
+          -0.76,
+          0.82
+        ]
+      }
+    },
+    {
+      "check": "agreement row rebuilt from its own printed inputs (collagen_area_vs_hydroxyproline)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 28.1,
+      "observed": 28.1,
+      "detail": "root mean square of the paired difference",
+      "evidence": {
+        "tolerance": 0.05,
+        "bias": 0.0,
+        "loa": [
+          -1.1,
+          1.1
+        ]
+      }
+    },
+    {
+      "check": "agreement row rebuilt from its own printed inputs (operator_1_vs_operator_2_collagen_area)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 19.1,
+      "observed": 19.1,
+      "detail": "root mean square of the paired difference",
+      "evidence": {
+        "tolerance": 0.05,
+        "bias": -0.14,
+        "loa": [
+          -1.63,
+          1.35
+        ]
+      }
+    },
+    {
+      "check": "agreement row rebuilt from its own printed inputs (half_1_vs_half_2_hydroxyproline)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 21.5,
+      "observed": 21.5,
+      "detail": "root mean square of the paired difference",
+      "evidence": {
+        "tolerance": 0.05,
+        "bias": 0.02,
+        "loa": [
+          -0.82,
+          0.86
+        ]
+      }
+    },
+    {
+      "check": "half-to-half difference standard deviation",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.429,
+      "observed": 0.429,
+      "detail": "limits-of-agreement width over two times 1.96",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "single half-chip read error",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.303,
+      "observed": 0.303,
+      "detail": "difference standard deviation over root two",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "half-mean error",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.214,
+      "observed": 0.214,
+      "detail": "single-read error over root two",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "half-chip construct ratio",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.885,
+      "observed": 0.885,
+      "detail": "21.5 over 24.3",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "within-chip share implied by the half-chip ratio",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.43,
+      "observed": 0.43,
+      "detail": "averaging two halves removes half the within-chip share",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "delivered attenuation on the hydroxyproline axis",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.92,
+      "observed": 0.92,
+      "detail": "lambda = sigma_x^2 / (sigma_x^2 + sigma_u^2)",
+      "evidence": {
+        "tolerance": 0.005,
+        "spread": 1.046,
+        "sigma_u": 0.303
+      }
+    },
+    {
+      "check": "delivered attenuation on the collagen_area axis",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.78,
+      "observed": 0.78,
+      "detail": "lambda = sigma_x^2 / (sigma_x^2 + sigma_u^2)",
+      "evidence": {
+        "tolerance": 0.005,
+        "spread": 2.24,
+        "sigma_u": null
+      }
+    },
+    {
+      "check": "delivered attenuation on the acta2 axis",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.89,
+      "observed": 0.89,
+      "detail": "lambda = sigma_x^2 / (sigma_x^2 + sigma_u^2)",
+      "evidence": {
+        "tolerance": 0.005,
+        "spread": 0.82,
+        "sigma_u": null
+      }
+    },
+    {
+      "check": "delivered matrix attenuation from the delivered spreads",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.92,
+      "observed": 0.92,
+      "detail": "Table S9 footnote, the delivered share and the delivered read error",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "trajectory cells reproduce the block mean of hydroxyproline",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.0,
+      "observed": 2.0,
+      "detail": "29 arm-by-timepoint cells pooled on their own chip counts",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "trajectory cells reproduce the delivered hydroxyproline spread",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.046,
+      "observed": 1.046,
+      "detail": "quadrature sum of the pooled within-cell term and the spread of cell means",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "trajectory cells reproduce the delivered collagen area spread",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.24,
+      "observed": 2.24,
+      "detail": "quadrature sum of the pooled within-cell term and the spread of cell means",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "trajectory cells reproduce the delivered activation spread",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.82,
+      "observed": 0.82,
+      "detail": "quadrature sum of the pooled within-cell term and the spread of cell means",
+      "evidence": {
+        "tolerance": 0.0005
+      }
+    },
+    {
+      "check": "trajectory cells reproduce the hydroxyproline spread coefficient",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 52.3,
+      "observed": 52.3,
+      "detail": "delivered spread about the block mean",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "exact noncentral-t coefficient at n = 3",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 3.0709,
+      "observed": 3.0709,
+      "detail": "two groups of n at P < 0.05 and 80% power",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "exact noncentral-t coefficient at n = 4",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.3808,
+      "observed": 2.3808,
+      "detail": "two groups of n at P < 0.05 and 80% power",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "exact noncentral-t coefficient at n = 6",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.7955,
+      "observed": 1.7955,
+      "detail": "two groups of n at P < 0.05 and 80% power",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "exact noncentral-t coefficient at n = 12",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.1968,
+      "observed": 1.1968,
+      "detail": "two groups of n at P < 0.05 and 80% power",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "exact noncentral-t coefficient at n = 16",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.0237,
+      "observed": 1.0237,
+      "detail": "two groups of n at P < 0.05 and 80% power",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "exact noncentral-t coefficient at n = 24",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.8261,
+      "observed": 0.8261,
+      "detail": "two groups of n at P < 0.05 and 80% power",
+      "evidence": {
+        "tolerance": 5e-05
+      }
+    },
+    {
+      "check": "detectability floor (matrix_5_feature, sigma 0.74, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.27,
+      "observed": 2.27,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.74,
+        "k": 3.0709
+      }
+    },
+    {
+      "check": "detectability floor (matrix_5_feature, sigma 0.74, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.76,
+      "observed": 1.76,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.74,
+        "k": 2.3808
+      }
+    },
+    {
+      "check": "detectability floor (matrix_5_feature, sigma 0.74, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.33,
+      "observed": 1.33,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.74,
+        "k": 1.7955
+      }
+    },
+    {
+      "check": "detectability floor (matrix_5_feature, sigma 0.74, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.89,
+      "observed": 0.89,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.74,
+        "k": 1.1968
+      }
+    },
+    {
+      "check": "detectability floor (matrix_5_feature, sigma 0.74, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.76,
+      "observed": 0.76,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.74,
+        "k": 1.0237
+      }
+    },
+    {
+      "check": "detectability floor (matrix_5_feature, sigma 0.74, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.61,
+      "observed": 0.61,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.74,
+        "k": 0.8261
+      }
+    },
+    {
+      "check": "detectability floor (matrix_area_units, sigma 1.495, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 4.59,
+      "observed": 4.59,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.495,
+        "k": 3.0709
+      }
+    },
+    {
+      "check": "detectability floor (matrix_area_units, sigma 1.495, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 3.56,
+      "observed": 3.56,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.495,
+        "k": 2.3808
+      }
+    },
+    {
+      "check": "detectability floor (matrix_area_units, sigma 1.495, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.68,
+      "observed": 2.68,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.495,
+        "k": 1.7955
+      }
+    },
+    {
+      "check": "detectability floor (matrix_area_units, sigma 1.495, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.79,
+      "observed": 1.79,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.495,
+        "k": 1.1968
+      }
+    },
+    {
+      "check": "detectability floor (matrix_area_units, sigma 1.495, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.53,
+      "observed": 1.53,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.495,
+        "k": 1.0237
+      }
+    },
+    {
+      "check": "detectability floor (matrix_area_units, sigma 1.495, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.24,
+      "observed": 1.24,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.495,
+        "k": 0.8261
+      }
+    },
+    {
+      "check": "detectability floor (matrix_single_frequency, sigma 1.46, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 4.48,
+      "observed": 4.48,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.46,
+        "k": 3.0709
+      }
+    },
+    {
+      "check": "detectability floor (matrix_single_frequency, sigma 1.46, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 3.48,
+      "observed": 3.48,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.46,
+        "k": 2.3808
+      }
+    },
+    {
+      "check": "detectability floor (matrix_single_frequency, sigma 1.46, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.62,
+      "observed": 2.62,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.46,
+        "k": 1.7955
+      }
+    },
+    {
+      "check": "detectability floor (matrix_single_frequency, sigma 1.46, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.75,
+      "observed": 1.75,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.46,
+        "k": 1.1968
+      }
+    },
+    {
+      "check": "detectability floor (matrix_single_frequency, sigma 1.46, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.49,
+      "observed": 1.49,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.46,
+        "k": 1.0237
+      }
+    },
+    {
+      "check": "detectability floor (matrix_single_frequency, sigma 1.46, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.21,
+      "observed": 1.21,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 1.46,
+        "k": 0.8261
+      }
+    },
+    {
+      "check": "detectability floor (matrix_acellular_ladder, sigma 0.21, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.64,
+      "observed": 0.64,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.21,
+        "k": 3.0709
+      }
+    },
+    {
+      "check": "detectability floor (matrix_acellular_ladder, sigma 0.21, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.5,
+      "observed": 0.5,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.21,
+        "k": 2.3808
+      }
+    },
+    {
+      "check": "detectability floor (matrix_acellular_ladder, sigma 0.21, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.38,
+      "observed": 0.38,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.21,
+        "k": 1.7955
+      }
+    },
+    {
+      "check": "detectability floor (matrix_acellular_ladder, sigma 0.21, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.25,
+      "observed": 0.25,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.21,
+        "k": 1.1968
+      }
+    },
+    {
+      "check": "detectability floor (matrix_acellular_ladder, sigma 0.21, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.21,
+      "observed": 0.21,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.21,
+        "k": 1.0237
+      }
+    },
+    {
+      "check": "detectability floor (matrix_acellular_ladder, sigma 0.21, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.17,
+      "observed": 0.17,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.21,
+        "k": 0.8261
+      }
+    },
+    {
+      "check": "detectability floor (activation_5_feature, sigma 0.38, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.17,
+      "observed": 1.17,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.38,
+        "k": 3.0709
+      }
+    },
+    {
+      "check": "detectability floor (activation_5_feature, sigma 0.38, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.9,
+      "observed": 0.9,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.38,
+        "k": 2.3808
+      }
+    },
+    {
+      "check": "detectability floor (activation_5_feature, sigma 0.38, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.68,
+      "observed": 0.68,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.38,
+        "k": 1.7955
+      }
+    },
+    {
+      "check": "detectability floor (activation_5_feature, sigma 0.38, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.45,
+      "observed": 0.45,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.38,
+        "k": 1.1968
+      }
+    },
+    {
+      "check": "detectability floor (activation_5_feature, sigma 0.38, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.39,
+      "observed": 0.39,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.38,
+        "k": 1.0237
+      }
+    },
+    {
+      "check": "detectability floor (activation_5_feature, sigma 0.38, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.31,
+      "observed": 0.31,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.38,
+        "k": 0.8261
+      }
+    },
+    {
+      "check": "detectability floor (activation_single_frequency, sigma 0.71, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.18,
+      "observed": 2.18,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.71,
+        "k": 3.0709
+      }
+    },
+    {
+      "check": "detectability floor (activation_single_frequency, sigma 0.71, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.69,
+      "observed": 1.69,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.71,
+        "k": 2.3808
+      }
+    },
+    {
+      "check": "detectability floor (activation_single_frequency, sigma 0.71, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.27,
+      "observed": 1.27,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.71,
+        "k": 1.7955
+      }
+    },
+    {
+      "check": "detectability floor (activation_single_frequency, sigma 0.71, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.85,
+      "observed": 0.85,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.71,
+        "k": 1.1968
+      }
+    },
+    {
+      "check": "detectability floor (activation_single_frequency, sigma 0.71, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.73,
+      "observed": 0.73,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.71,
+        "k": 1.0237
+      }
+    },
+    {
+      "check": "detectability floor (activation_single_frequency, sigma 0.71, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.59,
+      "observed": 0.59,
+      "detail": "k(n) times the measured per-chip standard deviation",
+      "evidence": {
+        "tolerance": 0.005,
+        "sigma": 0.71,
+        "k": 0.8261
+      }
+    },
+    {
+      "check": "12-chip floor as a share of the untreated injury arm",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 25.9,
+      "observed": 25.9,
+      "detail": "floor against the day-21 injury mean",
+      "evidence": {
+        "tolerance": 0.087865
+      }
+    },
+    {
+      "check": "12-chip floor as a share of the day-21 arm separation",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 48.0,
+      "observed": 48.0,
+      "detail": "floor against the untreated injury minus uninjured control",
+      "evidence": {
+        "tolerance": 0.630435
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_acellular_ladder, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 20.9,
+      "observed": 20.9,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 6.8,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_acellular_ladder, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 6.8,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_acellular_ladder, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 12.2,
+      "observed": 12.2,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 6.8,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_acellular_ladder, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 8.1,
+      "observed": 8.1,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 6.8,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_acellular_ladder, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 7.0,
+      "observed": 7.0,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 6.8,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_acellular_ladder, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 5.6,
+      "observed": 5.6,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 6.8,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_halves_averaged, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 66.0,
+      "observed": 66.0,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 21.5,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_halves_averaged, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 51.2,
+      "observed": 51.2,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 21.5,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_halves_averaged, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 38.6,
+      "observed": 38.6,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 21.5,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_halves_averaged, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 25.7,
+      "observed": 25.7,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 21.5,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_halves_averaged, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 22.0,
+      "observed": 22.0,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 21.5,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_halves_averaged, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 17.8,
+      "observed": 17.8,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 21.5,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_single_half, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 74.6,
+      "observed": 74.6,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.3,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_single_half, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 57.9,
+      "observed": 57.9,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.3,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_single_half, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 43.6,
+      "observed": 43.6,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.3,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_single_half, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 29.1,
+      "observed": 29.1,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.3,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_single_half, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 24.9,
+      "observed": 24.9,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.3,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (hydroxyproline_single_half, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 20.1,
+      "observed": 20.1,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.3,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_operator_mean, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 76.5,
+      "observed": 76.5,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.9,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_operator_mean, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 59.3,
+      "observed": 59.3,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.9,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_operator_mean, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 44.7,
+      "observed": 44.7,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.9,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_operator_mean, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 29.8,
+      "observed": 29.8,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.9,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_operator_mean, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 25.5,
+      "observed": 25.5,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.9,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_operator_mean, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 20.6,
+      "observed": 20.6,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 24.9,
+        "source": "measured_here"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_intra_organ_sampling, n = 3)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 127.1,
+      "observed": 127.1,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 41.4,
+        "source": "design_input_sampling"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_intra_organ_sampling, n = 4)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 98.6,
+      "observed": 98.6,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 41.4,
+        "source": "design_input_sampling"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_intra_organ_sampling, n = 6)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 74.3,
+      "observed": 74.3,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 41.4,
+        "source": "design_input_sampling"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_intra_organ_sampling, n = 12)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 49.5,
+      "observed": 49.5,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 41.4,
+        "source": "design_input_sampling"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_intra_organ_sampling, n = 16)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 42.4,
+      "observed": 42.4,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 41.4,
+        "source": "design_input_sampling"
+      }
+    },
+    {
+      "check": "replication cell (collagen_area_intra_organ_sampling, n = 24)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 34.2,
+      "observed": 34.2,
+      "detail": "exact coefficient times the channel coefficient of variation",
+      "evidence": {
+        "tolerance": 0.05,
+        "cv_pct": 41.4,
+        "source": "design_input_sampling"
+      }
+    },
+    {
+      "check": "the sampling input sets the pre-specified replication",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 49.5,
+      "observed": 49.5,
+      "detail": "41.4% intra-organ sampling coefficient at n = 12",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the achieved matrix-axis figure would have admitted n = 10",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 54.8,
+      "observed": 54.9,
+      "detail": "Table S8 footnote",
+      "evidence": {
+        "tolerance": 0.116184
+      }
+    },
+    {
+      "check": "all policies meet at the full budget (d_optimal)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "sub-sampling cannot create information",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "all policies meet at the full budget (fixed_schedule)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "sub-sampling cannot create information",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "all policies meet at the full budget (random_matched_rate)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "sub-sampling cannot create information",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "all policies meet at the full budget (prior_art_allocator)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "sub-sampling cannot create information",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "all policies meet at the full budget (clairvoyant_oracle)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "sub-sampling cannot create information",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "delivered fit precision scales the full-budget value",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 18.3,
+      "observed": 18.3,
+      "detail": "the delivered 116-device fit is not an allocated subset",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "naive and corrected precision stand in the ratio of the attenuation factor",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 18.3,
+      "observed": 18.3,
+      "detail": "correction widens the interval by the reciprocal of lambda",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "operating-point saving against the fixed clock",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 19.0,
+      "observed": 19.0,
+      "detail": "93 devices against 112",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "operating-point saving as a share of the block",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 13.0,
+      "observed": 13.0,
+      "detail": "13 percentage points",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "operating point is interpolated on the measured grid",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 93.0,
+      "observed": 93.0,
+      "detail": "20.0% corrected relative standard error",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "ladder ratio times the last-value error (persistence)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.85,
+      "observed": 0.85,
+      "detail": "the ratio column and the error column cannot disagree",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "ladder ratio times the last-value error (arima_110)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.87,
+      "observed": 0.87,
+      "detail": "the ratio column and the error column cannot disagree",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "ladder ratio times the last-value error (mechanistic)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.82,
+      "observed": 0.82,
+      "detail": "the ratio column and the error column cannot disagree",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "ladder ratio times the last-value error (without_damping)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.8,
+      "observed": 0.8,
+      "detail": "the ratio column and the error column cannot disagree",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "ladder ratio times the last-value error (obscal_twin)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.77,
+      "observed": 0.77,
+      "detail": "the ratio column and the error column cannot disagree",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "seed sweep ratio reproduces the error (persistence)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.85,
+      "observed": 0.85,
+      "detail": "SI Table S17 Panel A",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "seed sweep ratio reproduces the error (arima_110)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.87,
+      "observed": 0.87,
+      "detail": "SI Table S17 Panel A",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "seed sweep ratio reproduces the error (mechanistic)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.82,
+      "observed": 0.82,
+      "detail": "SI Table S17 Panel A",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "seed sweep ratio reproduces the error (without_damping)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.8,
+      "observed": 0.8,
+      "detail": "SI Table S17 Panel A",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "seed sweep ratio reproduces the error (obscal_twin)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.77,
+      "observed": 0.77,
+      "detail": "SI Table S17 Panel A",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "the budgeted curve stays above the clairvoyant oracle below the full budget",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.4,
+      "observed": 0.4,
+      "detail": "the narrowest sub-full-budget gap",
+      "evidence": {
+        "tolerance": 0.05,
+        "max_gap": 2.1999999999999957
+      }
+    },
+    {
+      "check": "the widest sub-full-budget gap",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.2,
+      "observed": 2.2,
+      "detail": "the widest sub-full-budget gap",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the two curves meet at the full budget",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "parity once the same devices have been consumed",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "the matrix horizon breaks even with a last-value predictor",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.04,
+      "observed": 1.04,
+      "detail": "the twin is no better than carrying the last value forward there",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_only at 0.40)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.48,
+      "observed": 0.49,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.011,
+        "assay_cv": 0.41
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_only at 0.55)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.64,
+      "observed": 0.64,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.010818,
+        "assay_cv": 0.41
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_only at 0.80)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.79,
+      "observed": 0.79,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.009938,
+        "assay_cv": 0.41
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_only at 1.50)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.93,
+      "observed": 0.93,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.0081,
+        "assay_cv": 0.41
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_split at 0.40)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.65,
+      "observed": 0.66,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.013125,
+        "assay_cv": 0.29
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_split at 0.55)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.78,
+      "observed": 0.78,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.012091,
+        "assay_cv": 0.29
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_split at 0.80)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.88,
+      "observed": 0.88,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.0105,
+        "assay_cv": 0.29
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_area_split at 1.50)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.96,
+      "observed": 0.96,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.0082,
+        "assay_cv": 0.29
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_hyp_split at 0.40)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.86,
+      "observed": 0.86,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.01575,
+        "assay_cv": 0.16
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_hyp_split at 0.55)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.92,
+      "observed": 0.92,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.013364,
+        "assay_cv": 0.16
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_hyp_split at 0.80)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.96,
+      "observed": 0.96,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.011,
+        "assay_cv": 0.16
+      }
+    },
+    {
+      "check": "design attenuation ladder (matrix_hyp_split at 1.50)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.99,
+      "observed": 0.99,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.0083,
+        "assay_cv": 0.16
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_qpcr_only at 0.40)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.69,
+      "observed": 0.69,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.013625,
+        "assay_cv": 0.27
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_qpcr_only at 0.55)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.81,
+      "observed": 0.81,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.012364,
+        "assay_cv": 0.27
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_qpcr_only at 0.80)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.9,
+      "observed": 0.9,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.010625,
+        "assay_cv": 0.27
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_qpcr_only at 1.50)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.97,
+      "observed": 0.97,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.008233,
+        "assay_cv": 0.27
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_split at 0.40)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.82,
+      "observed": 0.82,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.01525,
+        "assay_cv": 0.19
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_split at 0.55)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.89,
+      "observed": 0.89,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.013091,
+        "assay_cv": 0.19
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_split at 0.80)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.95,
+      "observed": 0.95,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.010937,
+        "assay_cv": 0.19
+      }
+    },
+    {
+      "check": "design attenuation ladder (activation_split at 1.50)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.98,
+      "observed": 0.98,
+      "detail": "lambda computed rather than fitted from the design-time analytical coefficient held at one value down the whole column",
+      "evidence": {
+        "tolerance": 0.008267,
+        "assay_cv": 0.19
+      }
+    },
+    {
+      "check": "artefact ablation delta (reference)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (medium_swap)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.07,
+      "observed": 0.07,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (temperature_cycle)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.05,
+      "observed": 0.05,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (perfusion_stop_restart)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.12,
+      "observed": 0.12,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (held_out_geometry)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.28,
+      "observed": 0.28,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (without_drift_correction)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.32,
+      "observed": 0.32,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (without_bubble_exclusion)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.45,
+      "observed": 0.45,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "artefact ablation delta (without_artefact_covariates)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.57,
+      "observed": 0.57,
+      "detail": "change in held-out matrix error against the reference configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "dropping every artefact covariate is the largest loss in the table",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 77.0,
+      "observed": 77.0,
+      "detail": "1.31 against 0.74",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "transfer degradation (held_out_operator)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 6.8,
+      "observed": 6.8,
+      "detail": "change against the in-distribution reference",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "transfer degradation (held_out_batch)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.2,
+      "observed": 16.2,
+      "detail": "change against the in-distribution reference",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "transfer degradation (cross_treatment_source)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 18.9,
+      "observed": 18.9,
+      "detail": "change against the in-distribution reference",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "transfer degradation (held_out_geometry)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 37.8,
+      "observed": 37.8,
+      "detail": "change against the in-distribution reference",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "transfer degradation (cross_hepatocyte_line)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 50.0,
+      "observed": 50.0,
+      "detail": "change against the in-distribution reference",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "agreement change (held_out_batch)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.05,
+      "observed": -0.05,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "detectability floor change (held_out_batch)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.14,
+      "observed": 0.14,
+      "detail": "floor against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (held_out_operator)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.03,
+      "observed": -0.03,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "detectability floor change (held_out_operator)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.06,
+      "observed": 0.06,
+      "detail": "floor against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (second_cell_lot)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.04,
+      "observed": -0.04,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (second_cell_source)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.08,
+      "observed": -0.08,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "detectability floor change (second_cell_source)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.16,
+      "observed": 0.16,
+      "detail": "floor against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (perfusion_removed)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.1,
+      "observed": -0.1,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "detectability floor change (perfusion_removed)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.32,
+      "observed": 0.32,
+      "detail": "floor against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (lower_injury_dose)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.16,
+      "observed": -0.16,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (second_hepatocyte_line)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.13,
+      "observed": -0.13,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "detectability floor change (second_hepatocyte_line)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.44,
+      "observed": 0.44,
+      "detail": "floor against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "agreement change (held_out_geometry)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": -0.22,
+      "observed": -0.22,
+      "detail": "agreement against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "detectability floor change (held_out_geometry)",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.33,
+      "observed": 0.33,
+      "detail": "floor against the development configuration",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "the held-out-geometry floor is the coefficient times its own per-chip sigma",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.22,
+      "observed": 1.22,
+      "detail": "the printed floor is reported as k(12) sigma with k(12) = 1.1968, so the per-chip sigma it implies is reproduced from the printed floor",
+      "evidence": {
+        "tolerance": 0.005,
+        "implied_sigma": 1.0193736926435517
+      }
+    },
+    {
+      "check": "capacity power-law exponent on the matrix axis",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.13,
+      "observed": 0.13,
+      "detail": "held-out error against latent dimension over a 16-fold span",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "capacity power-law exponent on the activation axis",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.14,
+      "observed": 0.14,
+      "detail": "held-out error against latent dimension over a 16-fold span",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "capacity power-law exponent on the albumin axis",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.12,
+      "observed": 0.12,
+      "detail": "held-out error against latent dimension over a 16-fold span",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "the deployed dimension recovers the available error reduction",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 91.0,
+      "observed": 91.0,
+      "detail": "0.94 to 0.74 against 0.94 to 0.72",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "the deployed dimension uses the printed share of the parameters",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 28.9,
+      "observed": 28.9,
+      "detail": "36 400 against 126 000",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the deployed dimension uses the printed share of the fit time",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 51.9,
+      "observed": 51.9,
+      "detail": "14 minutes against 27",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the conceded error is the printed share of the detectability floor",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 2.2,
+      "observed": 2.2,
+      "detail": "0.02 micrograms against the 0.89 floor",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "chips per week at 4 modules",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 10.4,
+      "observed": 10.4,
+      "detail": "260-chip total over the mid-point of the contingency range",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "chips per week at 8 modules",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 17.3,
+      "observed": 17.3,
+      "detail": "260-chip total over the mid-point of the contingency range",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "chips per week at 12 modules",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 24.8,
+      "observed": 24.8,
+      "detail": "260-chip total over the mid-point of the contingency range",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the loop closes on the sum of its stages",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 4.1,
+      "observed": 4.1,
+      "detail": "sweep, circuit fit, state update and allocation update",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the loop runs the printed multiple of real time",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 438.0,
+      "observed": 438.0,
+      "detail": "sampling interval over the summed stage times",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "relative blank drift at 100 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.24,
+      "observed": 0.24,
+      "detail": "drift per day over the day-0 magnitude",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "resolvable change over 14 days at 100 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 479.0,
+      "observed": 479.0,
+      "detail": "three times the measured blank drift over the matching interval",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "relative blank drift at 1000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.27,
+      "observed": 0.27,
+      "detail": "drift per day over the day-0 magnitude",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "resolvable change over 14 days at 1000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 218.0,
+      "observed": 218.0,
+      "detail": "three times the measured blank drift over the matching interval",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "relative blank drift at 4000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.29,
+      "observed": 0.29,
+      "detail": "drift per day over the day-0 magnitude",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "resolvable change over 14 days at 4000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 118.0,
+      "observed": 118.0,
+      "detail": "three times the measured blank drift over the matching interval",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "relative blank drift at 10000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.31,
+      "observed": 0.31,
+      "detail": "drift per day over the day-0 magnitude",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "resolvable change over 14 days at 10000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 80.0,
+      "observed": 80.0,
+      "detail": "three times the measured blank drift over the matching interval",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "relative blank drift at 40000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.35,
+      "observed": 0.35,
+      "detail": "drift per day over the day-0 magnitude",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "resolvable change over 14 days at 40000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 50.0,
+      "observed": 50.0,
+      "detail": "three times the measured blank drift over the matching interval",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "relative blank drift at 100000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.38,
+      "observed": 0.38,
+      "detail": "drift per day over the day-0 magnitude",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "resolvable change over 14 days at 100000 Hz",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 34.0,
+      "observed": 34.0,
+      "detail": "three times the measured blank drift over the matching interval",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "perfused detectability per chip-day",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.00353,
+      "observed": 0.00353,
+      "detail": "floor divided by chip-days per group",
+      "evidence": {
+        "tolerance": 5e-06
+      }
+    },
+    {
+      "check": "static detectability per chip-day",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.0048,
+      "observed": 0.0048,
+      "detail": "floor divided by chip-days per group",
+      "evidence": {
+        "tolerance": 5e-06
+      }
+    },
+    {
+      "check": "detectability ratio between the two configurations",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.36,
+      "observed": 1.36,
+      "detail": "higher is worse for the static build",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "minimum detectable difference at the pooled within-arm spread",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.08,
+      "observed": 1.08,
+      "detail": "12 chips per group on a 0.90 microgram spread",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "best and worst within-run coefficients differ by the printed multiple",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 6.6,
+      "observed": 6.6,
+      "detail": "Table 3's ten channels",
+      "evidence": {
+        "tolerance": 0.05,
+        "n_channels": 10
+      }
+    },
+    {
+      "check": "the same spread across all thirteen channels",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 11.0,
+      "observed": 11.0,
+      "detail": "SI Table S18",
+      "evidence": {
+        "tolerance": 0.5,
+        "n_channels": 13
+      }
+    },
+    {
+      "check": "perfused against static at S2 day 14",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 10.1,
+      "observed": 10.1,
+      "detail": "perfused relative to its static counterpart",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "perfused against static at S2 day 21",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 19.2,
+      "observed": 19.2,
+      "detail": "perfused relative to its static counterpart",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "perfused against static at S4 day 14",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 6.9,
+      "observed": 6.9,
+      "detail": "perfused relative to its static counterpart",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "perfused against static at S4 day 21",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 6.6,
+      "observed": 6.6,
+      "detail": "perfused relative to its static counterpart",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "activation reduction under treatment",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 38.7,
+      "observed": 38.7,
+      "detail": "terminal ACTA2 against the untreated injury arm",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "deposited-matrix reduction under treatment",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 33.9,
+      "observed": 33.9,
+      "detail": "terminal hydroxyproline against the untreated injury arm",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "COL1A1 reduction under treatment",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 25.7,
+      "observed": 25.7,
+      "detail": "the transcript pair dissociates more than the tissue axis",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "cell-only matrix offset against the uninjured control",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.33,
+      "observed": 0.33,
+      "detail": "the therapeutic contributes matrix of its own",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "cell-only offset as a share of a control chip's matrix",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 21.0,
+      "observed": 21.0,
+      "detail": "0.33 micrograms against 1.58",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "the umbilical arm's effluent marker inversion",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.16,
+      "observed": 1.16,
+      "detail": "pro-collagen rises while tissue hydroxyproline falls",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "differentially expressed genes recovered in the published direction",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 57.7,
+      "observed": 57.7,
+      "detail": "Table 1 and SI Table S16 Panel B",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "the recovery count is not separated from chance",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.1,
+      "observed": 0.1,
+      "detail": "two-sided exact binomial test against a coin flip",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "rank agreement by chance",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 4.2,
+      "observed": 4.2,
+      "detail": "four treatment arms, one chance ordering in 24",
+      "evidence": {
+        "tolerance": 0.05
+      }
+    },
+    {
+      "check": "studies meeting the digital-twin definition",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 12.08,
+      "observed": 12.08,
+      "detail": "18 of 149 across the review's cohort",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "forecast-driven arm against untreated injury",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 1.16,
+      "observed": 1.16,
+      "detail": "the headline reduction is against the untreated injury arm",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "three fractions against a single bolus at half the total dose",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.55,
+      "observed": 0.55,
+      "detail": "a gap under the detectability floor",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "the concession to continuous maximal dosing",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 0.25,
+      "observed": 0.25,
+      "detail": "half the cells across three interventions",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "untreated injury mean",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 3.42,
+      "observed": 3.42,
+      "detail": "the reference arm every contrast is read against",
+      "evidence": {
+        "tolerance": 0.005
+      }
+    },
+    {
+      "check": "the dose-by-schedule surface is complete",
+      "category": "manuscript",
+      "status": "PASS",
+      "expected": 16.0,
+      "observed": 16.0,
+      "detail": "four doses crossed with four schedules at matched total dose",
+      "evidence": {
+        "tolerance": 0.5
+      }
+    },
+    {
+      "check": "acellular ladder column is reproducible from one design coefficient",
+      "category": "manuscript",
+      "status": "FAIL",
+      "expected": "one coefficient fitting all four rows",
+      "observed": {
+        "0.40": 0.0402,
+        "0.55": 0.0,
+        "0.80": 0.0,
+        "1.50": 0.0
+      },
+      "detail": "the 40% row needs a 0.04 analytical coefficient while the design point is printed as 1.00; the article's own footnote records the same tension, so the column is a statement about a colinear-free arm rather than a computed ladder",
+      "evidence": {
+        "printed_column": {
+          "0.4": 0.99,
+          "0.55": 1.0,
+          "0.8": 1.0,
+          "1.5": 1.0
+        }
+      }
+    },
+    {
+      "check": "activation attenuation is a value at the spread achieved",
+      "category": "manuscript",
+      "status": "FAIL",
+      "expected": 0.89,
+      "observed": 0.82,
+      "detail": "Table 3's footnote calls the non-matrix factors design values at the spread achieved, but the printed activation factor is the 55% design-point row; at the delivered activation spread the design ladder gives a lower factor",
+      "evidence": {
+        "tolerance": 0.005,
+        "delivered_activation_cv": 0.40700000000000003,
+        "design_point_factor": 0.89,
+        "factor_at_delivered_spread": 0.8210647884252215
+      }
+    },
+    {
+      "check": "design collinearity panel",
+      "category": "manuscript",
+      "status": "NOT_RUN",
+      "expected": "a measured value",
+      "observed": null,
+      "detail": "Table S9 Panel B prices four design subsets, and the cell-level design grid those subsets are built from is not deposited, so the variance inflation factors and condition numbers cannot be recomputed",
+      "evidence": {
+        "printed": {
+          "full_design_with_both_ladders": {
+            "devices": 192,
+            "vif": 2.4,
+            "condition_number": 6.1,
+            "region_area": 1.0
+          },
+          "biological_arms_only": {
+            "devices": 148,
+            "vif": 11.6,
+            "condition_number": 38.7,
+            "region_area": 6.8
+          },
+          "acellular_ladder_only": {
+            "devices": 24,
+            "vif": 1.0,
+            "condition_number": 1.8,
+            "region_area": 0.14
+          },
+          "coverage_ladder_only": {
+            "devices": 20,
+            "vif": 1.1,
+            "condition_number": 2.2,
+            "region_area": 0.19
+          }
+        }
+      }
+    },
+    {
+      "check": "traceable (VIF, condition number, joint region area) triple",
+      "category": "manuscript",
+      "status": "NOT_RUN",
+      "expected": "a measured value",
+      "observed": null,
+      "detail": "The printed triple is arithmetically consistent with a two-column standardised state block only up to the correlation implied by the variance inflation factor; the condition number of 6.1 and the region area of 6.8 are not both reproduced by the two-column construction, which the unshipped grid would settle",
+      "evidence": {
+        "biological_arms_only": {
+          "devices": 148,
+          "vif": 11.6,
+          "condition_number": 38.7,
+          "region_area": 6.8
+        }
+      }
+    },
+    {
+      "check": "harness pool carries the designed number of devices",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 260,
+      "observed": 260,
+      "detail": "the pool is laid out to the article's own chip budget",
+      "evidence": {
+        "provenance": "schema_compatible_device_pool",
+        "devices": 260,
+        "retained": 213,
+        "withdrawn": 47,
+        "blocks": {
+          "biological": 148,
+          "acellular_ladder": 24,
+          "coverage_ladder": 20,
+          "cell_free": 8,
+          "held_out_geometry": 12,
+          "cross_line": 12,
+          "static_counterpart": 36
+        },
+        "arms": {
+          "S1": 12,
+          "S2": 62,
+          "S3": 28,
+          "S4": 62,
+          "S5": 32,
+          "S6": 12,
+          "L0": 24,
+          "CL": 20,
+          "CF": 8
+        }
+      }
+    },
+    {
+      "check": "harness pool block partition matches the design",
+      "category": "execution",
+      "status": "PASS",
+      "expected": {
+        "biological": 148,
+        "acellular_ladder": 24,
+        "coverage_ladder": 20,
+        "cell_free": 8,
+        "held_out_geometry": 12,
+        "cross_line": 12,
+        "static_counterpart": 36
+      },
+      "observed": {
+        "biological": 148,
+        "acellular_ladder": 24,
+        "coverage_ladder": 20,
+        "cell_free": 8,
+        "held_out_geometry": 12,
+        "cross_line": 12,
+        "static_counterpart": 36
+      },
+      "detail": "SI Table S9 Panel B and Table 1",
+      "evidence": {}
+    },
+    {
+      "check": "building the pool twice yields identical devices",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 260,
+      "detail": "the pool builder is a pure function of its specification and seed",
+      "evidence": {}
+    },
+    {
+      "check": "every published budget identity closes",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": {
+        "arm_totals_sum_to_biological_block": [
+          148.0,
+          148.0
+        ],
+        "biological_plus_ladders_is_full_design": [
+          192.0,
+          192.0
+        ],
+        "blocks_sum_to_pool": [
+          260.0,
+          260.0
+        ],
+        "withdrawn_leaves_analysed": [
+          215.0,
+          215.0
+        ],
+        "schedule_split_fills_pool": [
+          260.0,
+          260.0
+        ],
+        "fit_plus_held_out_is_block": [
+          148.0,
+          148.0
+        ]
+      },
+      "detail": "arm totals, ladder sums, pool total, withdrawals and the schedule split",
+      "evidence": {}
+    },
+    {
+      "check": "the withdrawal ledger closes against the pool",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 17.307692,
+      "detail": "class counts and shares sum to the withdrawn total",
+      "evidence": {}
+    },
+    {
+      "check": "the pool round-trips through its on-disk form unchanged",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 260,
+      "detail": "arrays and labels rebuild the same records",
+      "evidence": {}
+    },
+    {
+      "check": "one sweep leaves the printed number of residual degrees of freedom",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 9,
+      "observed": 9,
+      "detail": "two real quantities per frequency less the five free parameters",
+      "evidence": {}
+    },
+    {
+      "check": "the circuit fit recovers an exactly modelled sweep",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "a noiseless sweep must be fitted to machine precision",
+      "evidence": {
+        "tolerance": 1e-08
+      }
+    },
+    {
+      "check": "the recovered barrier resistance of a noiseless sweep",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 260.0,
+      "observed": 260.0,
+      "detail": "the fit is exercised against a closed-form target it can be wrong about",
+      "evidence": {
+        "tolerance": 0.0026000000000000003
+      }
+    },
+    {
+      "check": "the recovered constant-phase exponent of a noiseless sweep",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.86,
+      "observed": 0.86,
+      "detail": "the exponent is the axis the interface reading rests on",
+      "evidence": {
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "check": "the fit converges on a measured sweep from the pool",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 11.422516,
+      "detail": "the sweep was forward-modelled, so the fit has a target it can miss",
+      "evidence": {}
+    },
+    {
+      "check": "the lack-of-fit statistic stays inside the unit interval",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 1.0,
+      "detail": "a residual chi-square survival probability on nine degrees of freedom",
+      "evidence": {}
+    },
+    {
+      "check": "the geometric correction is one study constant",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1,
+      "observed": 1,
+      "detail": "never refitted per device, timepoint or arm",
+      "evidence": {
+        "factor": 0.694011153038
+      }
+    },
+    {
+      "check": "the geometric correction is a fraction of the floor area",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 0.694011153038,
+      "detail": "the perimeter term the current path adds is taken off the floor area",
+      "evidence": {}
+    },
+    {
+      "check": "the fused front end carries the printed number of features",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 5,
+      "observed": 5,
+      "detail": "Eq. (2): three electrical, one optical and one effluent feature",
+      "evidence": {}
+    },
+    {
+      "check": "the single-frequency ablation collapses the electrical block",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 3,
+      "observed": 3,
+      "detail": "the comparator channel replaces the three electrical features",
+      "evidence": {}
+    },
+    {
+      "check": "coverage is carried beside the features rather than inside them",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 86.4599,
+      "detail": "coverage enters the regression as its own measured covariate",
+      "evidence": {}
+    },
+    {
+      "check": "band information shares sum to one hundred percent",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 100.0,
+      "observed": 100.0,
+      "detail": "the bands partition the matrix-axis information",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "the excitation grid is the printed seven-point set",
+      "category": "execution",
+      "status": "PASS",
+      "expected": [
+        100.0,
+        500.0,
+        1000.0,
+        4000.0,
+        10000.0,
+        40000.0,
+        100000.0
+      ],
+      "observed": [
+        100.0,
+        500.0,
+        1000.0,
+        4000.0,
+        10000.0,
+        40000.0,
+        100000.0
+      ],
+      "detail": "100 Hz to 100 kHz, unevenly spaced",
+      "evidence": {}
+    },
+    {
+      "check": "the pooled design matrix has full column rank",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 15,
+      "observed": 15,
+      "detail": "rank equals the delivered column count",
+      "evidence": {
+        "rows": 157
+      }
+    },
+    {
+      "check": "the residual covariance is symmetric",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 0.0,
+      "detail": "a covariance the floor is computed from must be symmetric",
+      "evidence": {}
+    },
+    {
+      "check": "the residual covariance is positive definite",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 9.808456298377949e-05,
+      "detail": "Eq. (4) inverts it",
+      "evidence": {}
+    },
+    {
+      "check": "the plug-in covariance inflation is the printed formula",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.046667,
+      "observed": 1.046667,
+      "detail": "Nbio/(Nbio - p - 2) at the pool's own device count",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "the identifiability audit prices both state axes",
+      "category": "execution",
+      "status": "PASS",
+      "expected": [
+        true,
+        "both_axes_identified"
+      ],
+      "observed": [
+        true,
+        "both_axes_identified"
+      ],
+      "detail": "neither axis is rank deficient in the plane the two span",
+      "evidence": {
+        "vif_activation": 1.0581889259217554,
+        "vif_matrix": 1.0581889259217554,
+        "condition_number": 1.2699069115474682,
+        "state_correlation": 0.2344976875089759,
+        "jointly_identified": true,
+        "verdict": "both_axes_identified"
+      }
+    },
+    {
+      "check": "the moment correction matches a brute-force recomputation",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "Eq. (4) recomputed by an independent matrix product",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "delivered attenuation on the activation axis",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.961799,
+      "observed": 0.961799,
+      "detail": "diagonal of Sigma_x (Sigma_x + Sigma_u)^-1 with an explicit solve",
+      "evidence": {
+        "tolerance": 1e-12,
+        "sigma_x": 0.8193777971550379
+      }
+    },
+    {
+      "check": "delivered attenuation on the matrix axis",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.846821,
+      "observed": 0.846821,
+      "detail": "diagonal of Sigma_x (Sigma_x + Sigma_u)^-1 with an explicit solve",
+      "evidence": {
+        "tolerance": 1e-12,
+        "sigma_x": 1.5579847979695054
+      }
+    },
+    {
+      "check": "the correction enlarges the delivered matrix sensitivity",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "a larger norm after the moment correction",
+      "observed": [
+        3.491736,
+        4.083016
+      ],
+      "detail": "every per-axis factor is below one, so the correction can only enlarge it",
+      "evidence": {}
+    },
+    {
+      "check": "the pooled calibration recovers the pool's own activation sensitivities",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "every generated sensitivity inside three standard errors of its estimate",
+      "observed": [
+        [
+          0.3263,
+          0.26,
+          0.1299
+        ],
+        [
+          0.0034,
+          -0.03,
+          0.0854
+        ],
+        [
+          -0.0275,
+          -0.021,
+          0.011
+        ],
+        [
+          1.227,
+          1.15,
+          0.3848
+        ],
+        [
+          5.7163,
+          5.8,
+          0.6523
+        ]
+      ],
+      "detail": "the delivered slope is put on the pool's own standardised scale and compared with the sensitivity the pool was generated from; a channel whose sensitivity is below the regression's own noise floor is reported through its interval rather than through a bare ratio",
+      "evidence": {}
+    },
+    {
+      "check": "the pooled calibration recovers the pool's own matrix sensitivities",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "every generated sensitivity inside three standard errors of its estimate",
+      "observed": [
+        [
+          0.5109,
+          0.52,
+          0.0889
+        ],
+        [
+          -0.0044,
+          -0.018,
+          0.0585
+        ],
+        [
+          -0.0299,
+          -0.03,
+          0.0075
+        ],
+        [
+          2.4814,
+          2.55,
+          0.2632
+        ],
+        [
+          1.7917,
+          1.7,
+          0.4463
+        ]
+      ],
+      "detail": "the delivered slope is put on the pool's own standardised scale and compared with the sensitivity the pool was generated from; a channel whose sensitivity is below the regression's own noise floor is reported through its interval rather than through a bare ratio",
+      "evidence": {}
+    },
+    {
+      "check": "the pooled calibration recovers the pool's own coverage sensitivities",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "every generated coverage sensitivity inside three standard errors",
+      "observed": [
+        [
+          0.889,
+          0.88,
+          0.1084
+        ],
+        [
+          -0.0479,
+          -0.08,
+          0.0713
+        ],
+        [
+          -0.0529,
+          -0.05,
+          0.0092
+        ],
+        [
+          0.7165,
+          0.68,
+          0.3211
+        ],
+        [
+          0.5797,
+          0.45,
+          0.5444
+        ]
+      ],
+      "detail": "coverage is the dominant nuisance and is identified by its own ladder",
+      "evidence": {}
+    },
+    {
+      "check": "the bootstrap interval brackets its point estimate",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": [
+        0.6094822104524884,
+        0.6721799477389727,
+        0.7530300835779375
+      ],
+      "detail": "a percentile interval that excludes its own statistic is mis-built",
+      "evidence": {}
+    },
+    {
+      "check": "the variance inflation factor matches its two-column closed form",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.384139,
+      "observed": 1.384139,
+      "detail": "1/(1 - r^2) written out by hand against the fitted diagnostic",
+      "evidence": {
+        "tolerance": 1e-06,
+        "correlation": 0.52681
+      }
+    },
+    {
+      "check": "the condition number matches its standardised two-column closed form",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.796284,
+      "observed": 1.796284,
+      "detail": "ratio of the two singular values of the standardised design",
+      "evidence": {
+        "tolerance": 0.001
+      }
+    },
+    {
+      "check": "the joint region area is the squared product of the singular values",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 115018.091155,
+      "observed": 115018.091155,
+      "detail": "a determinant of the information matrix, not a sensitivity matrix",
+      "evidence": {
+        "tolerance": 1e-06
+      }
+    },
+    {
+      "check": "the standardised design has unit column spread",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": [
+        1.0,
+        1.0
+      ],
+      "detail": "no axis is carried in the other's unit",
+      "evidence": {}
+    },
+    {
+      "check": "reference coding drops one level per categorical covariate",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 6,
+      "observed": 6,
+      "detail": "three numerics, two batch indicators and one operator indicator",
+      "evidence": {
+        "columns": [
+          "z::temperature",
+          "z::medium_change_indicator",
+          "z::hours_since_electrode_wetting",
+          "z::batch=B2",
+          "z::batch=B3",
+          "z::operator=OP2"
+        ]
+      }
+    },
+    {
+      "check": "the half-to-half difference standard deviation matches its brute-force value",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.735498,
+      "observed": 0.735498,
+      "detail": "the pooled read error is bounded from the paired halves alone",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the single half-chip read error is the difference over root two",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.520076,
+      "observed": 0.520076,
+      "detail": "Eq. (1) and the split-chip decomposition",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "averaging the two halves removes exactly half the assay variance",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.414214,
+      "observed": 1.414214,
+      "detail": "the half-mean error is the single-read error over root two",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "the two routes to the within-chip share agree",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.45,
+      "observed": 0.43355,
+      "detail": "the half-chip construct ratio implies a share that the split-chip decomposition independently reports",
+      "evidence": {
+        "tolerance": 0.03,
+        "split_chip_route": 0.2029
+      }
+    },
+    {
+      "check": "the split-chip route to the within-chip share",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.202889,
+      "observed": 0.202889,
+      "detail": "recomputed by hand from the two half reads",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "collapsing to the half-mean basis reproduces the terminal values",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 126,
+      "detail": "every hydroxyproline contrast is read on the half-mean",
+      "evidence": {}
+    },
+    {
+      "check": "the two ICC routes agree on the same table",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.798387,
+      "observed": 0.798387,
+      "detail": "a direct two-column form against the long-record form",
+      "evidence": {
+        "tolerance": 1e-10
+      }
+    },
+    {
+      "check": "the Bland-Altman bias matches its brute-force mean",
+      "category": "execution",
+      "status": "PASS",
+      "expected": -0.005452,
+      "observed": -0.005452,
+      "detail": "the difference of the two paired reads",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the limits of agreement are symmetric about the bias",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": -0.0,
+      "detail": "bias plus and minus 1.96 difference standard deviations",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the root-mean-square error rebuilt from the limits matches the direct value",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 56.333391,
+      "observed": 56.333391,
+      "detail": "the row's own printed inputs determine it",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "the estimate is held to an assay rather than a reader",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 0.798387,
+      "detail": "the destructive standard agrees with itself better than the sensor agrees with it",
+      "evidence": {}
+    },
+    {
+      "check": "the block spread is the quadrature sum of its two terms",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.873689,
+      "observed": 0.873689,
+      "detail": "pooled within-cell term and the spread of the cell means",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the block mean is the count-weighted mean of the cell means",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 2.0,
+      "observed": 2.0,
+      "detail": "the cells pool on their own chip counts",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the noncentral-t coefficient at n = 4",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 2.405581,
+      "observed": 2.380756,
+      "detail": "solved from the noncentral t against an independent enumeration of the power",
+      "evidence": {
+        "tolerance": 0.06
+      }
+    },
+    {
+      "check": "the noncentral-t coefficient at n = 12",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.207031,
+      "observed": 1.196813,
+      "detail": "solved from the noncentral t against an independent enumeration of the power",
+      "evidence": {
+        "tolerance": 0.06
+      }
+    },
+    {
+      "check": "the noncentral-t coefficient at n = 24",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.822355,
+      "observed": 0.826129,
+      "detail": "solved from the noncentral t against an independent enumeration of the power",
+      "evidence": {
+        "tolerance": 0.06
+      }
+    },
+    {
+      "check": "the floor is the coefficient times the per-chip spread",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.885642,
+      "observed": 0.885642,
+      "detail": "Eq. (5) on a named axis rather than one mixed-unit scalar",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the estimator covariance is the inverse of the information matrix",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "Eq. (5)'s inner factor, recomputed by an independent product",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the coefficient is monotonically decreasing in the replication",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": [
+        2.380756,
+        1.795543,
+        1.196813,
+        0.826129
+      ],
+      "detail": "a larger replication separates a smaller change at the same power",
+      "evidence": {}
+    },
+    {
+      "check": "the allocator returns exactly the budgeted placements",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 24,
+      "observed": 24,
+      "detail": "a device cannot be destroyed twice",
+      "evidence": {
+        "candidates": 126
+      }
+    },
+    {
+      "check": "the allocator never destroys the same unit twice",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 24,
+      "observed": 24,
+      "detail": "the exchange search keeps a feasible set",
+      "evidence": {}
+    },
+    {
+      "check": "every accepted placement increases the design information",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "a strictly increasing log determinant",
+      "observed": [
+        -36.734018,
+        11.791498
+      ],
+      "detail": "a D-optimal criterion is monotone under adding information",
+      "evidence": {}
+    },
+    {
+      "check": "the accepted set reaches full rank and stays there",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 2,
+      "observed": [
+        0,
+        2
+      ],
+      "detail": "the ridge keeps the early gain defined without changing the ordering",
+      "evidence": {}
+    },
+    {
+      "check": "the marginal gain matches a brute-force determinant difference",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.032372,
+      "observed": 0.032372,
+      "detail": "Eq. (6)'s determinant identity recomputed directly",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "the first placement is the argmax of the candidate gains",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 33,
+      "observed": 33,
+      "detail": "the forward search takes the highest-gain feasible pair at each step",
+      "evidence": {}
+    },
+    {
+      "check": "the random at matched rate bracket fills the same budget",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 24,
+      "observed": 24,
+      "detail": "every arm spends the identical device budget",
+      "evidence": {}
+    },
+    {
+      "check": "the prior-art bracket fills the same budget",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 24,
+      "observed": 24,
+      "detail": "every arm spends the identical device budget",
+      "evidence": {}
+    },
+    {
+      "check": "the prior-art allocator covers the calibration space further than a prefix",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "a wider minimum separation than the leading block",
+      "observed": [
+        0.727971,
+        0.33644
+      ],
+      "detail": "the re-implemented allocator is a farthest-point selection, not a prefix",
+      "evidence": {}
+    },
+    {
+      "check": "every policy meets at the full budget",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": {
+        "budget": 64,
+        "values": {
+          "d_optimal": 19.607890272500924,
+          "fixed_schedule": 19.6078902725009,
+          "random_matched_rate": 19.60789027250091,
+          "prior_art_allocator": 19.60789027250096,
+          "clairvoyant_oracle": 19.607890272500846
+        },
+        "spread": 6.039613253960852e-14,
+        "converged": true
+      },
+      "detail": "sub-sampling cannot create information",
+      "evidence": {}
+    },
+    {
+      "check": "the budgeted curve stays above the clairvoyant oracle below the full budget",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": {
+        "policy": "d_optimal",
+        "oracle": "clairvoyant_oracle",
+        "min_gap": 23.851442757093615,
+        "max_gap": 37.67392024027952,
+        "violations_at_devices": [],
+        "non_crossing": true
+      },
+      "detail": "an arm below the ceiling would be reporting leakage",
+      "evidence": {}
+    },
+    {
+      "check": "the random bracket reports its own dispersion at every budget point",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "200 usable draws per point",
+      "observed": [
+        [
+          200,
+          9.247956,
+          67.018629
+        ],
+        [
+          200,
+          9.324622,
+          32.329982
+        ],
+        [
+          200,
+          19.60789,
+          19.60789
+        ]
+      ],
+      "detail": "the bracket is printed with its tenth to ninetieth percentile dispersion, because a controller inside that band would be gaining from taking fewer noisy observations rather than from choosing better ones",
+      "evidence": {}
+    },
+    {
+      "check": "the allocator sits at or below the random tenth percentile over the mid budgets",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": {
+        "below_p10_at_devices": [],
+        "at_or_above_p10_at_devices": [
+          32,
+          48
+        ]
+      },
+      "detail": "the gain is separated from the number of terminations",
+      "evidence": {}
+    },
+    {
+      "check": "the operating point names a count for every policy on the block",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "one count per policy inside the block",
+      "observed": {
+        "fixed_schedule": 32,
+        "random_matched_rate": 63,
+        "prior_art_allocator": 32,
+        "d_optimal": 63
+      },
+      "detail": "the saving is named at one matched precision",
+      "evidence": {}
+    },
+    {
+      "check": "the operating point interpolates inside the measured budget grid",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "every crossing inside the measured range",
+      "observed": [
+        32,
+        64,
+        [
+          32,
+          32,
+          63,
+          63
+        ]
+      ],
+      "detail": "the counts are interpolated between measured budget points rather than read off a fitted curve",
+      "evidence": {}
+    },
+    {
+      "check": "the operating point names both arms at one matched precision",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "a named operating point for the allocator and its clock",
+      "observed": {
+        "target_corrected_rse_pct": 20.0,
+        "devices": {
+          "fixed_schedule": 32,
+          "random_matched_rate": 63,
+          "prior_art_allocator": 32,
+          "d_optimal": 63
+        },
+        "fractions": {
+          "fixed_schedule": 0.5,
+          "random_matched_rate": 0.9847641380777998,
+          "prior_art_allocator": 0.5,
+          "d_optimal": 0.9875754412948596
+        },
+        "interpolated_between_measured_points": true
+      },
+      "detail": "the arrow only names a saving; the two structural checks carry the argument",
+      "evidence": {}
+    },
+    {
+      "check": "the backbone consumes both state axes",
+      "category": "execution",
+      "status": "PASS",
+      "expected": [
+        2,
+        2
+      ],
+      "observed": [
+        2,
+        2
+      ],
+      "detail": "Eq. (7) carries the activation and matrix axes together",
+      "evidence": {}
+    },
+    {
+      "check": "the recurrence is propagated on the elapsed-time grid",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 0.1268800050020218,
+      "detail": "the damping term is strictly positive in the delivered configuration",
+      "evidence": {}
+    },
+    {
+      "check": "the ablation removes the energy-dissipation term exactly",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "the undamped row of the component ablation",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "one forward pass returns the observed window and the forecast",
+      "category": "execution",
+      "status": "PASS",
+      "expected": [
+        [
+          1,
+          9,
+          2
+        ],
+        [
+          1,
+          3,
+          2
+        ]
+      ],
+      "observed": [
+        [
+          1,
+          9,
+          2
+        ],
+        [
+          1,
+          3,
+          2
+        ]
+      ],
+      "detail": "the recurrence and its readout compose to the state shape",
+      "evidence": {}
+    },
+    {
+      "check": "the forecast is issued per axis for the requested horizon",
+      "category": "execution",
+      "status": "PASS",
+      "expected": [
+        3,
+        2
+      ],
+      "observed": [
+        3,
+        2
+      ],
+      "detail": "a horizon of three steps on two axes",
+      "evidence": {}
+    },
+    {
+      "check": "a backward pass carries a gradient into every parameter",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "every parameter populated and at least one moved",
+      "observed": [
+        7,
+        8
+      ],
+      "detail": "forward, loss, backward and an optimiser step are all exercised",
+      "evidence": {}
+    },
+    {
+      "check": "a saved checkpoint round-trips into identical forecasts",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "parameter update, saving and loading are all exercised",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the last-value predictor carries a ratio of one by construction",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.0,
+      "observed": 1.0,
+      "detail": "the ladder is read against persistence",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "every rung is scored on the same held-out splits",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": [
+        10
+      ],
+      "detail": "a rung scored on different splits could not be compared",
+      "evidence": {}
+    },
+    {
+      "check": "the last-value predictor is constant across the horizon",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "a zero-parameter baseline",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the two deterministic rungs report an exactly zero across-seed span",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": [
+        "persistence",
+        "arima_110"
+      ],
+      "detail": "no stochastic initialisation, so the span is zero by construction",
+      "evidence": {}
+    },
+    {
+      "check": "the mechanistic recurrence integrates to a finite trajectory",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": [
+        2.39985,
+        2.799983
+      ],
+      "detail": "the comparator rung is fitted on held-in series and then frozen",
+      "evidence": {}
+    },
+    {
+      "check": "the empirical coverage matches a brute-force count",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.75,
+      "observed": 0.75,
+      "detail": "the interval calibration is read off held-out scores",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the leakage diagnostic triggers only below its threshold",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 0.6,
+      "detail": "a ratio too far below the baseline is a check rather than a result",
+      "evidence": {}
+    },
+    {
+      "check": "the fitted twin reports the number of parameters it carries",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 374,
+      "detail": "capacity is reported rather than asserted",
+      "evidence": {}
+    },
+    {
+      "check": "the Welch statistic matches a hand-computed value",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 4.925493,
+      "observed": 4.925493,
+      "detail": "unequal-variance two-group contrast",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the Welch degrees of freedom match the Welch-Satterthwaite form",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 88.60083,
+      "observed": 88.60083,
+      "detail": "the two-group test the manuscript names",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the batch-adjusted contrast recovers an injected arm effect",
+      "category": "execution",
+      "status": "PASS",
+      "expected": -0.8,
+      "observed": -0.788497,
+      "detail": "a batch shift of 0.30 and an arm effect of 0.80 are both present",
+      "evidence": {
+        "tolerance": 0.05,
+        "degrees_of_freedom": 45.0
+      }
+    },
+    {
+      "check": "the batch adjustment moves the estimate away from the confounded one",
+      "category": "execution",
+      "status": "PASS",
+      "expected": -0.8,
+      "observed": [
+        -0.788497,
+        -0.788497
+      ],
+      "detail": "batch is crossed with arm rather than confounded with it",
+      "evidence": {}
+    },
+    {
+      "check": "the Holm step-down matches a brute-force running maximum",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "the maximum of the scaled p values in p-value order",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the area under the curve matches a brute-force pair count",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 1.0,
+      "observed": 1.0,
+      "detail": "the rank statistic equals the share of concordant pairs",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the binomial direction test matches a brute-force probability sum",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.030047,
+      "observed": 0.030047,
+      "detail": "the exact two-sided test against a coin flip",
+      "evidence": {
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "check": "a four-arm ranking has one chance ordering in twenty-four",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.041667,
+      "observed": 0.041667,
+      "detail": "the chance level a module's arm ranking is read against",
+      "evidence": {
+        "tolerance": 1e-12
+      }
+    },
+    {
+      "check": "the plain-text renderer never truncates a cell",
+      "category": "execution",
+      "status": "PASS",
+      "expected": true,
+      "observed": 148,
+      "detail": "column widths are taken from the data",
+      "evidence": {}
+    },
+    {
+      "check": "seeding makes the process-wide generator reproducible",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 0.0,
+      "observed": 0.0,
+      "detail": "a resumed run restores the seed it was started with",
+      "evidence": {
+        "tolerance": 1e-15
+      }
+    },
+    {
+      "check": "the atomic writer leaves no partial file behind",
+      "category": "execution",
+      "status": "PASS",
+      "expected": [],
+      "observed": [],
+      "detail": "the temporary file is replaced rather than left in place",
+      "evidence": {}
+    },
+    {
+      "check": "the atomic writer produces a world-readable artefact",
+      "category": "execution",
+      "status": "PASS",
+      "expected": 420,
+      "observed": 420,
+      "detail": "a temporary file created with mode 0600 would ship unreadable",
+      "evidence": {}
+    },
+    {
+      "check": "identical contents digest identically",
+      "category": "execution",
+      "status": "PASS",
+      "expected": "1cc103f316d7707bb7ead8d7a203934bbf0f1251b615eb6056deb22c90d6144f",
+      "observed": "1cc103f316d7707bb7ead8d7a203934bbf0f1251b615eb6056deb22c90d6144f",
+      "detail": "the manifest digests file contents",
+      "evidence": {}
+    },
+    {
+      "check": "no forbidden framing phrase appears in the shipped tree",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "the release speaks as the authoring team rather than about a reproduced work",
+      "evidence": {}
+    },
+    {
+      "check": "the harness pool is never described with stand-in vocabulary",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "a fixture is the software term; the pool is described as a device pool",
+      "evidence": {}
+    },
+    {
+      "check": "no emoji appears anywhere in the shipped tree",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "plain ASCII prose throughout",
+      "evidence": {}
+    },
+    {
+      "check": "no host home directory path appears in the shipped tree",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "paths are recorded relative to the repository root",
+      "evidence": {}
+    },
+    {
+      "check": "no email address appears in the shipped tree",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "the manuscript's contact block is not carried into the release",
+      "evidence": {}
+    },
+    {
+      "check": "no credential or token string appears in the shipped tree",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "no account material is shipped",
+      "evidence": {}
+    },
+    {
+      "check": "no compiled or tool cache would be committed",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": "every cache directory named in .gitignore",
+      "observed": [
+        18,
+        []
+      ],
+      "detail": "a compiled cache embeds the compiling host's absolute paths, so it is ignored here and swept from the tree once the verification run has finished",
+      "evidence": {
+        "ignored_names": [
+          "*.egg-info",
+          "*.py[cod]",
+          "*.tmp",
+          ".coverage",
+          ".eggs",
+          ".hypothesis",
+          ".mypy_cache",
+          ".pytest_cache"
+        ]
+      }
+    },
+    {
+      "check": "the only markdown kept is the README",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": [
+        "README.md"
+      ],
+      "observed": [
+        "README.md"
+      ],
+      "detail": "every other markdown file is removed",
+      "evidence": {}
+    },
+    {
+      "check": "no workflow directory is shipped",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": false,
+      "detail": "continuous integration is configured through the pre-commit hooks only",
+      "evidence": {}
+    },
+    {
+      "check": "LICENSE is present at the repository root",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": true,
+      "detail": "third-party provenance and dataset access conditions stay in the tree",
+      "evidence": {}
+    },
+    {
+      "check": "NOTICE is present at the repository root",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": true,
+      "detail": "third-party provenance and dataset access conditions stay in the tree",
+      "evidence": {}
+    },
+    {
+      "check": "README.md is present at the repository root",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": true,
+      "detail": "third-party provenance and dataset access conditions stay in the tree",
+      "evidence": {}
+    },
+    {
+      "check": "dataset_urls.txt is present at the repository root",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": true,
+      "detail": "third-party provenance and dataset access conditions stay in the tree",
+      "evidence": {}
+    },
+    {
+      "check": "every source module is reachable from the package root",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": 53,
+      "detail": "no module is shipped without an importer or a test",
+      "evidence": {}
+    },
+    {
+      "check": "no library module writes to standard output",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "the command-line layer logs through the logging module",
+      "evidence": {}
+    },
+    {
+      "check": "no configuration pins a value the manuscript reports as a result",
+      "category": "hygiene",
+      "status": "PASS",
+      "expected": true,
+      "observed": [],
+      "detail": "method and architecture constants stay; measured outcomes do not. A decimal a config legitimately carries and a table also prints is listed with its reason in the structural-coincidence register rather than silently skipped",
+      "evidence": {
+        "n_outcome_values_checked": 138.0,
+        "n_structural_coincidences": 10.0
+      }
+    },
+    {
+      "check": "the dataset register lists the verified resource addresses",
+      "category": "provenance",
+      "status": "PASS",
+      "expected": true,
+      "observed": 10,
+      "detail": "only addresses that were opened and whose content matched",
+      "evidence": {}
+    },
+    {
+      "check": "the register records the addresses that did not answer",
+      "category": "provenance",
+      "status": "PASS",
+      "expected": true,
+      "observed": true,
+      "detail": "an unreachable address is recorded rather than dropped",
+      "evidence": {}
+    },
+    {
+      "check": "dataset link reachability",
+      "category": "provenance",
+      "status": "NOT_RUN",
+      "expected": "a measured value",
+      "observed": null,
+      "detail": "the default pass opens no socket: reachability is probed only under an explicit live run, so the report is a function of the repository alone",
+      "evidence": {
+        "probed_live": false,
+        "clients": [
+          "urllib",
+          "curl"
+        ],
+        "attempts_per_link": 2
+      }
+    },
+    {
+      "check": "gate ruff",
+      "category": "gate",
+      "status": "PASS",
+      "expected": 0,
+      "observed": 0,
+      "detail": "the tool's exit code decides the gate",
+      "evidence": {
+        "label": "ruff"
+      }
+    },
+    {
+      "check": "gate black",
+      "category": "gate",
+      "status": "PASS",
+      "expected": 0,
+      "observed": 0,
+      "detail": "the tool's exit code decides the gate",
+      "evidence": {
+        "label": "black"
+      }
+    },
+    {
+      "check": "gate isort",
+      "category": "gate",
+      "status": "PASS",
+      "expected": 0,
+      "observed": 0,
+      "detail": "the tool's exit code decides the gate",
+      "evidence": {
+        "label": "isort"
+      }
+    },
+    {
+      "check": "gate mypy",
+      "category": "gate",
+      "status": "PASS",
+      "expected": 0,
+      "observed": 0,
+      "detail": "the tool's exit code decides the gate",
+      "evidence": {
+        "label": "mypy"
+      }
+    },
+    {
+      "check": "gate pytest",
+      "category": "gate",
+      "status": "PASS",
+      "expected": 0,
+      "observed": 0,
+      "detail": "the tool's exit code decides the gate",
+      "evidence": {
+        "label": "pytest"
+      }
+    },
+    {
+      "check": "claim C1 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The two state axes, stellate activation and deposited matrix, are separately calibrated by breaking their collinearity with acellular and seeding-density ladder",
+      "evidence": {
+        "anchors": [
+          "src/obscal/calibration/regression.py::assemble_design",
+          "src/obscal/calibration/regression.py::fit_pooled",
+          "src/obscal/design/ladders.py::acellular_ladder",
+          "src/obscal/design/ladders.py::seeding_density_ladder"
+        ]
+      }
+    },
+    {
+      "check": "claim C2 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Pooling 116 biological devices over 5 sensor features sets the plug-in covariance inflation at 1.064.",
+      "evidence": {
+        "anchors": [
+          "src/obscal/calibration/regression.py::plugin_inflation",
+          "src/obscal/calibration/regression.py::residual_covariance"
+        ]
+      }
+    },
+    {
+      "check": "claim C3 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Each calibration-block device is divided at harvest and both halves are read on the same hydroxyproline assay, bounding that standard's own error variance from ",
+      "evidence": {
+        "anchors": [
+          "src/obscal/terminal/splitchip.py::split_chip_error",
+          "src/obscal/terminal/splitchip.py::within_chip_fraction_from_halves",
+          "src/obscal/terminal/splitchip.py::error_covariance"
+        ]
+      }
+    },
+    {
+      "check": "claim C4 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The errors-in-variables moment correction is applied to every calibration slope, and the correction moves each matrix slope away from zero.",
+      "evidence": {
+        "anchors": [
+          "src/obscal/calibration/attenuation.py::moment_correction",
+          "src/obscal/calibration/attenuation.py::per_axis_lambda"
+        ]
+      }
+    },
+    {
+      "check": "claim C5 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "A damped oscillatory state-space twin consumes the calibrated front end, treats treatment as a state input rather than an observation channel, and forecasts bot",
+      "evidence": {
+        "anchors": [
+          "src/obscal/twin/oscillatory.py::DampedOscillatoryBackbone",
+          "src/obscal/twin/pipeline.py::fit_backbone",
+          "src/obscal/twin/pipeline.py::predict_series"
+        ]
+      }
+    },
+    {
+      "check": "claim C6 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The next destructive assay is placed by D-optimal design under a device budget, and the resulting curve is read against a fixed clock, a random subsample at mat",
+      "evidence": {
+        "anchors": [
+          "src/obscal/allocation/doptimal.py::d_optimal_order",
+          "src/obscal/allocation/doptimal.py::marginal_gain",
+          "src/obscal/allocation/policies.py::prior_art_allocator_order",
+          "src/obscal/allocation/curve.py::build_curve"
+        ]
+      }
+    },
+    {
+      "check": "claim C7 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The smallest resolvable change along a named axis follows from the covariance of the delivered estimator and the exact noncentral-t coefficient.",
+      "evidence": {
+        "anchors": [
+          "src/obscal/power/noncentral.py::two_group_coefficient",
+          "src/obscal/power/noncentral.py::directional_floor",
+          "src/obscal/power/noncentral.py::estimator_covariance"
+        ]
+      }
+    },
+    {
+      "check": "claim C8 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The primary endpoint's reproducibility is reported on the run and batch axis rather than the operator or assay axis, and the primary endpoint grades poor on tha",
+      "evidence": {
+        "anchors": [
+          "src/obscal/terminal/reproducibility.py::channel_reproducibility",
+          "src/obscal/terminal/reproducibility.py::grade_cv",
+          "src/obscal/terminal/reproducibility.py::cv_spread_ratio"
+        ]
+      }
+    },
+    {
+      "check": "claim C9 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Agreement against the destructive standard is reported as an intraclass correlation with Bland-Altman limits, and an estimate is never more reproducible than th",
+      "evidence": {
+        "anchors": [
+          "src/obscal/terminal/agreement.py::agreement",
+          "src/obscal/terminal/agreement.py::icc_absolute_agreement",
+          "src/obscal/terminal/agreement.py::rmse_from_loa"
+        ]
+      }
+    },
+    {
+      "check": "claim C10 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The platform's central asymmetry is a shape: matrix sensitivity peaks in the 500 Hz to 1 kHz resistive band while coverage sensitivity peaks at 40 kHz, so an el",
+      "evidence": {
+        "anchors": [
+          "src/obscal/frontend/bands.py::matrix_information_shares",
+          "src/obscal/frontend/bands.py::coverage_matrix_gap",
+          "assets/sweep_grid.txt"
+        ]
+      }
+    },
+    {
+      "check": "claim C11 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "The cell-free artefact channel is measured rather than assumed inert, and the resolvable-change threshold is three times the measured blank drift over the match",
+      "evidence": {
+        "anchors": [
+          "src/obscal/chip/sweep.py::resolvable_change",
+          "src/obscal/frontend/blanks.py::schedule_prediction",
+          "src/obscal/chip/sweep.py::resolvable_change_table"
+        ]
+      }
+    },
+    {
+      "check": "claim C12 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Treatment is a dose-by-schedule surface at matched cumulative dose, and both tissue axes fall monotonically with dose so no dose optimum is claimed.",
+      "evidence": {
+        "anchors": [
+          "src/obscal/design/surface.py::TreatmentSurface",
+          "src/obscal/design/surface.py::monotonicity_verdict",
+          "src/obscal/design/surface.py::constraint_axis_report"
+        ]
+      }
+    },
+    {
+      "check": "claim C13 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Forty-five of 260 devices were withdrawn under pre-declared inclusion rules in six mutually exclusive classes, leaving 215 analysed.",
+      "evidence": {
+        "anchors": [
+          "src/obscal/design/withdrawal.py::classify_device",
+          "src/obscal/design/withdrawal.py::ledger_closure"
+        ]
+      }
+    },
+    {
+      "check": "claim C14 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Contrasts use batch as a crossed factor, P is unadjusted in the tables and any count across a test family carries its Holm-corrected count.",
+      "evidence": {
+        "anchors": [
+          "src/obscal/evaluation/contrasts.py::batch_adjusted_contrast",
+          "src/obscal/evaluation/multiplicity.py::holm_step_down"
+        ]
+      }
+    },
+    {
+      "check": "claim C15 maps to executed code",
+      "category": "claim",
+      "status": "PASS",
+      "expected": "PASS",
+      "observed": "PASS",
+      "detail": "Two public resources supply the external tests: an alcohol Liver-Chip series as a phenotype anchor and an independently published organoid line as a state-model",
+      "evidence": {
+        "anchors": [
+          "src/obscal/evaluation/discrimination.py::direction_recovery",
+          "src/obscal/evaluation/discrimination.py::rank_agreement",
+          "dataset_urls.txt"
+        ]
+      }
+    }
+  ],
+  "manuscript_discrepancies": [
+    {
+      "check": "acellular ladder column is reproducible from one design coefficient",
+      "category": "manuscript",
+      "status": "FAIL",
+      "expected": "one coefficient fitting all four rows",
+      "observed": {
+        "0.40": 0.0402,
+        "0.55": 0.0,
+        "0.80": 0.0,
+        "1.50": 0.0
+      },
+      "detail": "the 40% row needs a 0.04 analytical coefficient while the design point is printed as 1.00; the article's own footnote records the same tension, so the column is a statement about a colinear-free arm rather than a computed ladder",
+      "evidence": {
+        "printed_column": {
+          "0.4": 0.99,
+          "0.55": 1.0,
+          "0.8": 1.0,
+          "1.5": 1.0
+        }
+      }
+    },
+    {
+      "check": "activation attenuation is a value at the spread achieved",
+      "category": "manuscript",
+      "status": "FAIL",
+      "expected": 0.89,
+      "observed": 0.82,
+      "detail": "Table 3's footnote calls the non-matrix factors design values at the spread achieved, but the printed activation factor is the 55% design-point row; at the delivered activation spread the design ladder gives a lower factor",
+      "evidence": {
+        "tolerance": 0.005,
+        "delivered_activation_cv": 0.40700000000000003,
+        "design_point_factor": 0.89,
+        "factor_at_delivered_spread": 0.8210647884252215
+      }
+    }
+  ],
+  "integrity_manifest": {
+    "name": "integrity_manifest.json",
+    "written_last": true
+  }
+}

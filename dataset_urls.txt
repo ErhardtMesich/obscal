@@ -1,0 +1,80 @@
+ObsCal external resource register
+=================================
+Every line below was fetched from this host and its returned content was matched
+against the identifier the manuscript prints in its Table 1 / Table S21 row.
+Entries are grouped by what the item is, because the access condition differs:
+an expression deposit is a data resource, a catalogue number is a material
+resource, and a cell-line record is an identifier resolution service.
+
+Nothing in this file is redistributed with the release. The on-chip device
+records behind the manuscript's own tables are not deposited by the article and
+are not obtainable here; that absence is a property of the study, not of this
+link list.
+
+Expression data resources
+-------------------------
+name       GEO GSE175396
+role       external injury-phenotype anchor (no fibrogenic compartment, 1 timepoint)
+content    !Series_title = Genome-wide transcriptome profiling of human Liver-Chip model of
+           alcohol-associated liver disease (ALD) using RNA-seq; 3 control/exposed treatment
+           groups over 7 samples; platform GPL11154; public since 2021-05-25
+verified   HTTP 200, title and sample counts matched
+url        https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE175396
+
+name       GEO GSE63859
+role       independently published human liver organoid series (transcriptomic only)
+content    !Series_title = Long term culture of genome-stable bipotent progenitor cells from
+           adult human liver; Expression profiling by array; 19 samples; public since 2015-01-15
+verified   HTTP 200, title and 19-sample count matched
+url        https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63859
+
+Cell-line identifier resolution
+-------------------------------
+name       LX-2 hepatic stellate line (Manuscript RRID:CVCL_5792)
+verified   HTTP 200, page title "Cellosaurus cell line LX-2 (CVCL_5792)"
+url        https://www.cellosaurus.org/CVCL_5792
+
+name       Hep G2 hepatocyte line (Manuscript RRID:CVCL_0027)
+verified   HTTP 200, page title "Cellosaurus cell line Hep-G2 (CVCL_0027)"
+url        https://www.cellosaurus.org/CVCL_0027
+
+name       Huh7 hepatocyte line (Manuscript catalogue JCRB0403; Cellosaurus CVCL_0336)
+verified   HTTP 200, page title "Cellosaurus cell line Huh-7 (CVCL_0336)"
+url        https://www.cellosaurus.org/CVCL_0336
+
+Material catalogue records
+--------------------------
+name       Hep G2, ATCC HB-8065
+verified   HTTP 200, page title "Hep G2 [HEPG2] - HB-8065 | ATCC"
+url        https://www.atcc.org/products/hb-8065
+
+name       Bone marrow-derived mesenchymal stromal cells, ATCC PCS-500-012
+verified   HTTP 200, page title "...Bone Marrow-Derived Mesenchymal Stem Cells; Normal, Human - PCS-500-012 | ATCC"
+url        https://www.atcc.org/products/pcs-500-012
+
+name       Umbilical cord-derived mesenchymal stromal cells, ATCC PCS-500-010
+verified   HTTP 200, page title "...Umbilical Cord-Derived Mesenchymal Stem Cells; Normal, Human - PCS-500-010 | ATCC"
+url        https://www.atcc.org/products/pcs-500-010
+
+name       Mesenchymal stromal cell growth medium, ATCC PCS-500-030
+verified   HTTP 200, page title "...Mesenchymal Stem Cell Basal Medium for Adipose, Umbilical and Bone Marrow-derived MSCs - PCS-500-030 | ATCC"
+url        https://www.atcc.org/products/pcs-500-030
+
+name       Bone marrow stromal supplement kit, ATCC PCS-500-041
+verified   HTTP 200, page title "...Mesenchymal Stem Cell Growth Kit for Bone Marrow-derived MSCs - PCS-500-041 | ATCC"
+url        https://www.atcc.org/products/pcs-500-041
+
+Addresses that did not answer from the verification host
+--------------------------------------------------------
+These are the addresses a reader would try next. They are recorded here rather
+than silently dropped, and they are excluded from the verified set above because
+no client opened them from this host during verification.
+
+https://ftp.ncbi.nlm.nih.gov/geo/series/GSE175nnn/GSE175396/suppl/   no route (curl 000, urllib URLError)
+https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63859/suppl/     no route (curl 000, urllib URLError)
+https://cellbank.nibiohn.go.jp/~cellbank/en/search_res_det.cgi?KEYWORDS=JCRB0403   no route (urllib URLError)
+https://www.sigmaaldrich.com/US/en/product/mm/scc064               no route (curl 000, urllib URLError)
+
+LX-2 is supplied by Merck Millipore under catalogue SCC064. The Merck product
+page did not answer from this host, so the LX-2 row above resolves through the
+Cellosaurus RRID record the manuscript prints instead of through the vendor page.

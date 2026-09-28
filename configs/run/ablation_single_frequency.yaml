@@ -1,0 +1,11 @@
+inherit: primary.yaml
+run:
+  name: ablation_single_frequency
+  kind: ablation
+  title: Without the multi-frequency front end
+  component_removed: multi_frequency_sweep
+  substitute: single_frequency_reading_at_12.5_Hz
+  diagnostic: matrix_and_coverage_intervals_overlap
+toggles:
+  multi_frequency_front_end: false
+singular_column: null

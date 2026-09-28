@@ -1,0 +1,16 @@
+inherit: primary.yaml
+run:
+  name: ablation_single_axis
+  kind: ablation
+  title: Without the two-axis state
+  component_removed: second_state_axis
+  substitute: collapse_to_a_single_axis
+  diagnostic: cross_axis_dissociation_invisible
+toggles:
+  two_axis_state: false
+analyses:
+  - name: calibration
+    axes: [matrix]
+  - name: detectability
+    replication: [12]
+    units: [ug_hydroxyproline_per_chip]

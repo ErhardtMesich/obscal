@@ -1,0 +1,26 @@
+inherit: primary.yaml
+run:
+  name: supplementary_seed_sensitivity
+  kind: supplementary
+  title: Seed sensitivity and convergence on the matrix axis
+  group: C
+seeds: 5
+axis: matrix
+horizon_days: 7
+panel_a:
+  rungs: [persistence, arima_110, mechanistic, without_damping, obscal_twin]
+  report: [rmse, ratio_to_persistence, across_seed_range, initialisation]
+panel_b:
+  criteria:
+    - name: matrix_error_7day
+      unit: normalised_rmse
+      direction: lower_is_better
+    - name: activation_error_7day
+      unit: normalised_rmse
+      direction: lower_is_better
+    - name: interval_coverage
+      unit: share_at_nominal_0p80
+      direction: higher_is_better
+  record_absent_where_not_retained: true
+learning_rate_sensitivity:
+  reported_on: one_shot_state_estimation_error

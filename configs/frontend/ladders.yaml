@@ -1,0 +1,34 @@
+ladders:
+  # The three non-biological ladders are main-text experiments, not controls.
+  # Without at least one arm of each kind the calibration design matrix has rank
+  # one in the plane the two state axes span.
+  acellular_matrix:
+    role: attenuation_free_matrix_sensitivity
+    substrate: type_I_collagen
+    levels: 6
+    devices: 24
+    devices_per_level: 4
+    state_activation: 0.0
+    state_coverage: 0.0
+    hyaluronan_gravimetrically_verified: true
+  seeding_density:
+    role: coverage_sensitivity_at_fixed_state
+    cell_types: [LX-2, HepG2]
+    levels: 5
+    devices: 20
+    devices_per_level: 4
+  early_activation:
+    role: activation_risen_deposition_not_yet_followed
+    window_culture_days: [7, 10]
+    devices: 8
+
+design_grid:
+  state_arms: 6
+  termination_times: 7
+  grid_points: 42
+  decision_grid_target: vif_and_condition_number
+
+coverage_covariate:
+  measured_optically: true
+  attenuates_independently: true
+  enters_regression: true

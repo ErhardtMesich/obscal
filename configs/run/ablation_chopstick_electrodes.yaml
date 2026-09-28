@@ -1,0 +1,10 @@
+inherit: primary.yaml
+run:
+  name: ablation_chopstick_electrodes
+  kind: ablation
+  title: Without substrate-integrated electrodes
+  component_removed: substrate_integrated_thin_film_pair
+  substitute: chopstick_electrode_pair
+  diagnostic: series_artefact
+toggles:
+  substrate_integrated_electrodes: false

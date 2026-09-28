@@ -1,0 +1,537 @@
+{
+  "algorithm": "sha256",
+  "root": "obscal",
+  "excluded": [
+    "integrity_manifest.json"
+  ],
+  "skipped_directories": [
+    ".git",
+    ".hypothesis",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "node_modules"
+  ],
+  "skipped_top_level": [
+    "artefacts",
+    "checkpoints",
+    "cohort",
+    "runs"
+  ],
+  "n_files": 127,
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "50f0f7b3e3cc14fb442c887508d41c6e797cce7a20d31d449989e58f13ce9839"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha256": "0896ec3018702c7296952e4deb0b0521d59fc43341fab55fca22c36a3175482b"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "a776746f20fbc438fa698aca634674c946d1e262f52d37b3557460543ec7acea"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "c0720a860adbf7d625748829cf8ed5fa99f44be3967c3388e04385fe1f8026f7"
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "8d9870bc6379b5a3a13ace59a9c83c49a1b558cb9637fc8800e682c6f68056f4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b1cd26a57215574fcb265f40ce72ef64def404d75e16dc1ca3e07bd3b443303c"
+    },
+    {
+      "path": "assets/sweep_grid.txt",
+      "sha256": "4bebedc1c548d763e6baca953d25c9b7be987ffa2e019575d1e081136cc94f02"
+    },
+    {
+      "path": "claim_to_code.json",
+      "sha256": "04bb61b821a458e047f8a898be6d1a33fc65d2ef92fc2e3794c3a8e577f6bf94"
+    },
+    {
+      "path": "configs/allocation/budget_grid.yaml",
+      "sha256": "3896dbffd83a68264bae67967bfcd3800005ee5b86836b4a93ecd5a0afb561f2"
+    },
+    {
+      "path": "configs/calibration/pooled.yaml",
+      "sha256": "5079d2945a30351360164d559f9660617715eb660ffbedf1aa153a7a65190fde"
+    },
+    {
+      "path": "configs/chip/culture.yaml",
+      "sha256": "68ebe85334243b43934e05cdaf8b085d7bff573e91ef482e1e0a64e5a76bedb8"
+    },
+    {
+      "path": "configs/chip/device.yaml",
+      "sha256": "995d2fb54176db68a20284bb83f3642bea722a7140ca04b83669afe5a61fcfb4"
+    },
+    {
+      "path": "configs/cohort/fixture.yaml",
+      "sha256": "0e70be9e92e23d0a4e20c22ef48a9731935a6b0ccb79b7fccdea73de26c13070"
+    },
+    {
+      "path": "configs/frontend/impedance_grid.yaml",
+      "sha256": "27fe43efe7dc2fd89864574e14f1e006eba81edc47c7726f13d6941d6fc287ae"
+    },
+    {
+      "path": "configs/frontend/ladders.yaml",
+      "sha256": "ac6c7987c74b83ef020248542afed5959075c4786f767a1e3891573221cad08b"
+    },
+    {
+      "path": "configs/run/_harness.yaml",
+      "sha256": "f9b88c335ebfd754dc664a6bb306121b376685a2867f1c5f2ee8c0e71a60d2ea"
+    },
+    {
+      "path": "configs/run/ablation_biological_arms_only.yaml",
+      "sha256": "8ee5e9526976f6a9d3898c22790ffd8a425d267fc916ee01e54adf550d72f21b"
+    },
+    {
+      "path": "configs/run/ablation_chopstick_electrodes.yaml",
+      "sha256": "a4ebf8c3767900e6679d70a1b18b1b5e0f988e164438f7b79c9281c5397a9bed"
+    },
+    {
+      "path": "configs/run/ablation_fixed_schedule.yaml",
+      "sha256": "343fee063beecf089b090019be4cfc7ee2a922f111a43a4e9205f8953ab8c195"
+    },
+    {
+      "path": "configs/run/ablation_naive_slopes.yaml",
+      "sha256": "08d2aaa353bb3197f50f47f3c52f29d06856a8fedf7a177fbab17a7551c11672"
+    },
+    {
+      "path": "configs/run/ablation_no_cell_free_channel.yaml",
+      "sha256": "6df6c6602e1ff457ed03b5d06da1aa9b694c61a60f44ed25dde4cd5496bbfee0"
+    },
+    {
+      "path": "configs/run/ablation_no_coverage_covariate.yaml",
+      "sha256": "852f069402f959046be8c57fd2d7a4ec14d844eb58c86f223cdb35bc08244564"
+    },
+    {
+      "path": "configs/run/ablation_pooled_strata.yaml",
+      "sha256": "c55f8d4efb7cddee25ad21f473c7cd58eb649bd7d4107726b7312ea6195ac652"
+    },
+    {
+      "path": "configs/run/ablation_sham_interrogation.yaml",
+      "sha256": "93d16def73681d8ff4271e4bce1d9681bc4b2a5eb4463fcd1fd947c1eec10522"
+    },
+    {
+      "path": "configs/run/ablation_single_axis.yaml",
+      "sha256": "631653b896ba2530c2409baec411a7c98f12378f756c6520f5df12bbfec26a6e"
+    },
+    {
+      "path": "configs/run/ablation_single_frequency.yaml",
+      "sha256": "0b14b7eb948ef2e2276dac0c1097a669a8f8c6fe9324e7f47214e32d4927ef47"
+    },
+    {
+      "path": "configs/run/ablation_undamped_backbone.yaml",
+      "sha256": "e77548f3d9683d5929a6c3a00183581d7df0c65b95642e01d8a66682dcdb6909"
+    },
+    {
+      "path": "configs/run/ablation_whole_chip_lysis.yaml",
+      "sha256": "53b23232080e5f69506b347eb46b4924c1de1b78bec2cc55e7c1ba2a45e33276"
+    },
+    {
+      "path": "configs/run/primary.yaml",
+      "sha256": "752db7cb9c8fd1776190379690325e8d4ed655dcd67bc37693b7a1f2c3907c40"
+    },
+    {
+      "path": "configs/run/supplementary_artefact_confound.yaml",
+      "sha256": "d9972f6c35f7f0060fc48bb2b6918506377588c6f01d2868244d41d36d090ca3"
+    },
+    {
+      "path": "configs/run/supplementary_capacity_scaling.yaml",
+      "sha256": "1ca2658b02277b88186554e69c3fccd46f9fac67d0d9135b16685981f4450641"
+    },
+    {
+      "path": "configs/run/supplementary_perfusion_contrast.yaml",
+      "sha256": "1917db731fd900393c3253a65162690e9e120abdef30b8f6182eeecd14cc2100"
+    },
+    {
+      "path": "configs/run/supplementary_seed_sensitivity.yaml",
+      "sha256": "8c4f93d67731243efb432573e4909e9609cfd85f3539c6fdea8238a48637c1f9"
+    },
+    {
+      "path": "configs/run/supplementary_source_generalization.yaml",
+      "sha256": "ec7ade816ee0b83fd0b07bc11ea439b8f4a33c030f07af8b922a338ba65f565b"
+    },
+    {
+      "path": "configs/run/supplementary_transfer_and_external.yaml",
+      "sha256": "cab18eca362c75e85b33a7d882b350802363c4d85f49fe4f6b550f96333155a4"
+    },
+    {
+      "path": "configs/twin/backbone.yaml",
+      "sha256": "29830ab125691d744cecfb5c427fde52c7b742bde6a9669ad4eb557139d5e6f9"
+    },
+    {
+      "path": "configs/twin/ladder.yaml",
+      "sha256": "70dcab08ea919f643e828d00e416987eea8d8c692db7542985cffcff55d99181"
+    },
+    {
+      "path": "dataset_urls.txt",
+      "sha256": "af65d346a15103d442efe1dcb98a44727c85522559d39dd0ae458be0dd313113"
+    },
+    {
+      "path": "environment.yml",
+      "sha256": "15d49e05afdedf0c4c064fabedd797948597b69f844957d693166506a950c0c8"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "86bbcd0a6e95c01477ed788d51d84749ceda8c6af79a470f79400ac3785798db"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "4ca2f7c70083e658926b023fecc8914c9caf28dd158cfa50cf8e3cb27f68e610"
+    },
+    {
+      "path": "scripts/launch_calibration.sh",
+      "sha256": "6686b6f09fb6820b01cff5b2520c938da7ef45b080aa8df3b06c842eb7f62329"
+    },
+    {
+      "path": "scripts/launch_forecast.sh",
+      "sha256": "79b8dbfc47af004825c6374238ebe965fcac05e2d6632231b1a0bd02241d5a96"
+    },
+    {
+      "path": "scripts/prepare_external.sh",
+      "sha256": "db964b71194bfe6ad6029232822a5cccb0e537f1d96ad9fdeb45dd090629276e"
+    },
+    {
+      "path": "src/obscal/__init__.py",
+      "sha256": "7abd0ff8e8c6a77f148580a9ec2fb3cd583ae50fb497f732f23afefc92940348"
+    },
+    {
+      "path": "src/obscal/allocation/__init__.py",
+      "sha256": "a3bd4a48a69314b664f93b6c6d3f52597044c4131e422029a37fac3164c1d7a6"
+    },
+    {
+      "path": "src/obscal/allocation/curve.py",
+      "sha256": "7654a0debcb2d503f1fdb8a446eeca0a60a67c84262621f91d595cc9d29ce9f1"
+    },
+    {
+      "path": "src/obscal/allocation/doptimal.py",
+      "sha256": "3c455124a935c4a7ce09ed6686826251c19ed6ebf94cc3e80e1411ff4a85547c"
+    },
+    {
+      "path": "src/obscal/allocation/pipeline.py",
+      "sha256": "99f9a642df07ac2d755f2ef3ef844a9704c39997c6943e7d6e8c47dd1d7491fa"
+    },
+    {
+      "path": "src/obscal/allocation/policies.py",
+      "sha256": "0c9770a63445ab704c8525cc5911f1ff34311858d7adbb4fc2f52bda79bcc6dd"
+    },
+    {
+      "path": "src/obscal/calibration/__init__.py",
+      "sha256": "d8df7f58db430a8659252e43c2c0df202adef4b1144e523484d6cd6b694dec78"
+    },
+    {
+      "path": "src/obscal/calibration/attenuation.py",
+      "sha256": "1a15f40c0d74bdfdfbb89bea996469ba3471a68970b3fd2ca89cbc4187755890"
+    },
+    {
+      "path": "src/obscal/calibration/bootstrap.py",
+      "sha256": "769b131c569c5c63522b6c49c2a432fcd7981e9800a0fef272e982bbf4c21df5"
+    },
+    {
+      "path": "src/obscal/calibration/diagnostics.py",
+      "sha256": "ee50e93cd0e30387bee9fcfac2cb7477e6970e2eb2b8e0aac614938dce79c22a"
+    },
+    {
+      "path": "src/obscal/calibration/pipeline.py",
+      "sha256": "4d561c2efbf8b810e2ca66a9e608adb6103929683458cc71e2d6e2e3882d8378"
+    },
+    {
+      "path": "src/obscal/calibration/regression.py",
+      "sha256": "8ed04922a20a7d1332a2238bf212b84517f658d6f9ae30b1107d1d493a356d10"
+    },
+    {
+      "path": "src/obscal/chip/__init__.py",
+      "sha256": "02fc0b7f8af25d609b49d414e14f299bb0ba4027412996dde71497df3f0b377f"
+    },
+    {
+      "path": "src/obscal/chip/circuit.py",
+      "sha256": "0becdc7bab3ac53d51693277162b1eb290b55bbe8e14fb2622591d7037abbec7"
+    },
+    {
+      "path": "src/obscal/chip/geometry.py",
+      "sha256": "800212c84ff82aea0db06df3fc06bb8d24ac2809877f0014f490ea99288fff9f"
+    },
+    {
+      "path": "src/obscal/chip/sweep.py",
+      "sha256": "855ea86ed57a358e3137c5d145080281e9c1dca7f466b315bb33f9047fd96149"
+    },
+    {
+      "path": "src/obscal/cli/__init__.py",
+      "sha256": "658366e22384da0fb03d441342ccc87f945a58fa20d16e448c1913ce820a1b1f"
+    },
+    {
+      "path": "src/obscal/cli/allocate.py",
+      "sha256": "7cae53244f47d916244d25fd6bd9ea4c8ff944666a8ab8e27306fc79bbf3c694"
+    },
+    {
+      "path": "src/obscal/cli/build_cohort.py",
+      "sha256": "153707b02118c7eba65d90fe5bef872b77ab9ff7e9985bb5077ac1b49a2fbb50"
+    },
+    {
+      "path": "src/obscal/cli/calibrate.py",
+      "sha256": "0d87e060c9d70312ee7b290089039c1054f2523c03a6f0a8ba653e6ee1a253da"
+    },
+    {
+      "path": "src/obscal/cli/forecast.py",
+      "sha256": "f9a99c08e603691659c2ae4e86ce9b883181b060ea67f41c32964c846a45239c"
+    },
+    {
+      "path": "src/obscal/cli/verify.py",
+      "sha256": "bc6d04a91c1ba16a1627d2ee7b141f84230b1f7e3d5934c5ed0ee38614d83a44"
+    },
+    {
+      "path": "src/obscal/cohort/__init__.py",
+      "sha256": "d716d00332573a0c26e67d905a6946bebf35fd6596ab3ee1eb4a43c3ab346ef0"
+    },
+    {
+      "path": "src/obscal/cohort/fixture.py",
+      "sha256": "5e5e924b15eb21304dd11bd9e6752a82a69a163c70d4750b7ca5e83a6605d4ad"
+    },
+    {
+      "path": "src/obscal/cohort/io.py",
+      "sha256": "a2eefa820eb89e0fa676d170d682b3ffaf919b211050715304bd20f9f8470ee7"
+    },
+    {
+      "path": "src/obscal/cohort/schema.py",
+      "sha256": "af6c9ddfc24301beb6c00dac7c9126ff44151185e282228134531392803bfd6e"
+    },
+    {
+      "path": "src/obscal/design/__init__.py",
+      "sha256": "706d37f363740b75af0838356face49c64fa696a3244f8763c8170929ba03e3a"
+    },
+    {
+      "path": "src/obscal/design/ladders.py",
+      "sha256": "67f6b65250335f5e66677ffda7af6cf75e8598a358be0adb8c81e566efcb9c7c"
+    },
+    {
+      "path": "src/obscal/design/partition.py",
+      "sha256": "84d594232c0c0676c0b79095204ee0161baf8be4d9ef22a53ba8bed9a8c3e159"
+    },
+    {
+      "path": "src/obscal/design/roster.py",
+      "sha256": "75b697e9d45bf08681a997a7fac9545f6dd4cda97029603a903f7867b667be3b"
+    },
+    {
+      "path": "src/obscal/design/surface.py",
+      "sha256": "de6f208a8daf69b02275ee3b41919d8736a508edfde20c2812debabcaec2685b"
+    },
+    {
+      "path": "src/obscal/design/withdrawal.py",
+      "sha256": "cc7cd0ca0cf67bccdf048f00ce496982f003ad4f45e089e624dec83b9a122d0e"
+    },
+    {
+      "path": "src/obscal/evaluation/__init__.py",
+      "sha256": "3017d8576e5413f0e19812be1021dab7de415acb86cd955e721effbe43854c17"
+    },
+    {
+      "path": "src/obscal/evaluation/contrasts.py",
+      "sha256": "8119f2401026d742a631b6c9263d7c02b9097d3916b02bf18128896e388e4de6"
+    },
+    {
+      "path": "src/obscal/evaluation/discrimination.py",
+      "sha256": "bc57a219d4372e01cf4e1b1e49ca03f350abd2c798050c7700ac76dfca11fb2a"
+    },
+    {
+      "path": "src/obscal/evaluation/multiplicity.py",
+      "sha256": "ccbcebf281586360470ece9e61baba183dd5947a0fd83047815b8ca4637eb660"
+    },
+    {
+      "path": "src/obscal/evaluation/report.py",
+      "sha256": "ea5744d99fe16bd789856fb4b086cca911af1cc51ef68a7f04b173d5cd594fb0"
+    },
+    {
+      "path": "src/obscal/frontend/__init__.py",
+      "sha256": "e0d79e44d88063b3f67dc1eef84640688e8abacfdedd4f4176e223c7afd214bd"
+    },
+    {
+      "path": "src/obscal/frontend/bands.py",
+      "sha256": "98fc12eeb24982421d2ec168f9e713c15bb77418f0e5e0464194793383e90957"
+    },
+    {
+      "path": "src/obscal/frontend/blanks.py",
+      "sha256": "1de67e8869c204de0f09b1f9a99a9b77f50db555c3beb2ec9184c4ae50c6596d"
+    },
+    {
+      "path": "src/obscal/frontend/features.py",
+      "sha256": "66a8da1b58b2f802afec70b00d31aa448928582c50002aaf4887981fb8938ad8"
+    },
+    {
+      "path": "src/obscal/power/__init__.py",
+      "sha256": "f9eea71199110ce8a62ee9584e33262fdc8095de965ef7bee3195dc942b47070"
+    },
+    {
+      "path": "src/obscal/power/noncentral.py",
+      "sha256": "b1ab825cff3c590c71c67116da4398406b54c8de5faad67180b9c156ba4819d2"
+    },
+    {
+      "path": "src/obscal/runtime/__init__.py",
+      "sha256": "0ed640d3a1b73032af6195ef9a40d4507badd6d6561b521d4851d4a5a0860f30"
+    },
+    {
+      "path": "src/obscal/runtime/atomic.py",
+      "sha256": "dd6b70c4f64caa13f2382899962ea6ca10c468d8629ff0f0f26fd05d70b00f7a"
+    },
+    {
+      "path": "src/obscal/runtime/config.py",
+      "sha256": "fce0c32c16e79d18e6021aa37cbb36c9fefcadc63c8ae490b45dd5c1bf2558a4"
+    },
+    {
+      "path": "src/obscal/runtime/seed.py",
+      "sha256": "2f120322638cf0c0f388d890f039ec91264b18cdbda8070e11cdd776d11ec4ed"
+    },
+    {
+      "path": "src/obscal/study.py",
+      "sha256": "ca7285f085deb6df96524b09319b540b75812962a1226f1cb233145a56f489ca"
+    },
+    {
+      "path": "src/obscal/terminal/__init__.py",
+      "sha256": "d547123bcdfe8539a670b9cff8cd98c159dd7bb767aad82b7fc99ace63ee1753"
+    },
+    {
+      "path": "src/obscal/terminal/agreement.py",
+      "sha256": "7ee1a83de0360a15873b3daeffe48d61a18b815a515d114e3f3bd02008e58701"
+    },
+    {
+      "path": "src/obscal/terminal/reproducibility.py",
+      "sha256": "21f36a79ff6d2b67e239b877d57018252ad420cbea5e314d7845ca8164f92868"
+    },
+    {
+      "path": "src/obscal/terminal/splitchip.py",
+      "sha256": "30ecf12aacf106d2377c17c2944972c1fc73e831d1f009e436c576f0c3fdc9c5"
+    },
+    {
+      "path": "src/obscal/twin/__init__.py",
+      "sha256": "62f7cd240ae8f911e0833139aa0d84d5e069746ef85aab3ef73cf10d6fefde45"
+    },
+    {
+      "path": "src/obscal/twin/intervals.py",
+      "sha256": "0498d84b9b5f2e264f389478561ee81a96ffb690497b2ab902a8f8b203864ffb"
+    },
+    {
+      "path": "src/obscal/twin/ladder.py",
+      "sha256": "b168c16895e9d9356da24dacad97ab9fa74e8671cd7e52e8c2cb74bc32ac2e7b"
+    },
+    {
+      "path": "src/obscal/twin/oscillatory.py",
+      "sha256": "1586d6dcda72e92c919daa58c14898b41e30f41fcf3072b44d77f239df5abcff"
+    },
+    {
+      "path": "src/obscal/twin/pipeline.py",
+      "sha256": "cfdd5c436360388048a7be5ea486bd8bac923755f9215f490c53bf488cdfbd60"
+    },
+    {
+      "path": "src/obscal/twin/rungs.py",
+      "sha256": "4d5dd18f67ae023d90737f3c333a6874d5641b2c7af0917e437e0bd8ef786f5b"
+    },
+    {
+      "path": "src/obscal/verification/__init__.py",
+      "sha256": "b49c74422a5ea857b33fa25586d57f0609e6a73dae65cdd5918d58d075ed1ae3"
+    },
+    {
+      "path": "src/obscal/verification/checks.py",
+      "sha256": "8f00f9455a867b6b163625be07ac9d90a6e8e59e0e39a9482240b158e6f5bd67"
+    },
+    {
+      "path": "src/obscal/verification/claimed_values.py",
+      "sha256": "1ac0a985e21dd9d71f3c01d86ec924289ac0b2c418ed01e9750a737c606ee2a0"
+    },
+    {
+      "path": "src/obscal/verification/claims.py",
+      "sha256": "20e24bc0480b04964c92e401b36107bd1eea0a8296dbf9d4cdab26fc7155d51d"
+    },
+    {
+      "path": "src/obscal/verification/driver.py",
+      "sha256": "0dd4f0876596267d409b8e5bd38fd55ee780548d6bc893424c89b38f0244fde5"
+    },
+    {
+      "path": "src/obscal/verification/execution.py",
+      "sha256": "f164b4e13de3359055cd07f40600a2546e2c883ae133911ce012a186d0df9e18"
+    },
+    {
+      "path": "src/obscal/verification/hygiene.py",
+      "sha256": "94bcb6ae603f92d7e215c32b5dcc2ba9fb1afeecc10cc23cf97313cf57b292ff"
+    },
+    {
+      "path": "src/obscal/verification/manifest.py",
+      "sha256": "e24a77ade9c55dfa61f7badff4cf7b7a2472103b52e7910e1d65ea9f81f282c9"
+    },
+    {
+      "path": "src/obscal/verification/manuscript.py",
+      "sha256": "3f8781ed719a4c146f3c184848946a251dd67b3f9fc2c175d6ee12ca22be1aa8"
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "b6be33e27ea8bcb64582b2962be8260c43073dbdf05cb2601f23f925b7c1073a"
+    },
+    {
+      "path": "tests/test_allocation.py",
+      "sha256": "f44b34cab9cdf6b769a3e28d242315b83d76050804403315e394021dca65a78e"
+    },
+    {
+      "path": "tests/test_calibration.py",
+      "sha256": "2b875d6185bb8cc3e7b13081f6f806a9ee0a2ad9745f1b04c35ebd6074a1df3b"
+    },
+    {
+      "path": "tests/test_chip.py",
+      "sha256": "ce775021c144583b38bde5e08ae4d0802fcb2dd0135aac384bd318a3fd7d4323"
+    },
+    {
+      "path": "tests/test_cohort.py",
+      "sha256": "3ca593766b4fba5e09c7043f74a1f449a3ab41468e96cc2f9096d20e2885fcca"
+    },
+    {
+      "path": "tests/test_design.py",
+      "sha256": "43b4c54f4ce2042caa72d5ac9545365485435c803a021a80dac43e6721fca7ae"
+    },
+    {
+      "path": "tests/test_evaluation.py",
+      "sha256": "6df20163db7ccaac5a7f7254a9d6a342a7ed2a9cef047bb8179e83a3226d65f7"
+    },
+    {
+      "path": "tests/test_frontend.py",
+      "sha256": "12d11c33c776d37d9305d467798e8eaabce35ad5a68ef49104919fadcf49dee1"
+    },
+    {
+      "path": "tests/test_power.py",
+      "sha256": "ba9447819028f582579c1b4674f50453f9fb79c4b9ebcf28a20c5c379c12828f"
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "sha256": "0e4d3727b175836078bd4c1fd740c1f20ce96e515c3b983c6d887fddda63db52"
+    },
+    {
+      "path": "tests/test_terminal.py",
+      "sha256": "bcc0e6c7333fa4344701b143f97111832589d83857c615b2f660670c23a62921"
+    },
+    {
+      "path": "tests/test_training_smoke.py",
+      "sha256": "2dac58995830d3ef96cb5eca50fe4efc16cb2110a0836a28148dccf994637552"
+    },
+    {
+      "path": "tests/test_twin.py",
+      "sha256": "f8d660d0fca57e41cb09b4507253ac1c9901071bce809440045069dcbc465987"
+    },
+    {
+      "path": "tests/test_verification.py",
+      "sha256": "2f05ee12b6a9b6fbd34f1d0eddddbbd939b6c0104443acff13318500693c8bac"
+    },
+    {
+      "path": "verification_report.json",
+      "sha256": "aab52b81646b230da7c2048309457c2e5c0d8b2a62ae96f5ec9a1cef186ff8a5"
+    },
+    {
+      "path": "verification_summary.txt",
+      "sha256": "73ab64669d3c316c849f60a3b9a4e067dd42d576c511f27e72722c493066ad29"
+    }
+  ],
+  "manifest_digest": "017a1d9cf11e70941e8cb1e573f2283320e1b3e9a84704ef168c326054a784ec"
+}

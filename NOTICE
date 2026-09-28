@@ -1,0 +1,73 @@
+Third-party components and sources
+=================================
+
+This release is the instrument group's own implementation. It bundles no
+third-party code, no third-party data and no pretrained weights. It does embed
+published method descriptions and public resource identifiers, listed below
+with their real licences and source addresses.
+
+Runtime and development packages
+--------------------------------
+numpy            BSD-3-Clause            https://numpy.org/                       (github.com/numpy/numpy)
+scipy            BSD-3-Clause            https://scipy.org/                       (github.com/scipy/scipy)
+torch            BSD-3-Clause            https://pytorch.org/                     (github.com/pytorch/pytorch)
+PyYAML           MIT                     https://pyyaml.org/                      (github.com/yaml/pyyaml)
+pytest           MIT                     https://pytest.org/                      (github.com/pytest-dev/pytest)
+mypy             MIT                     https://mypy-lang.org/                   (github.com/python/mypy)
+ruff             MIT                     https://docs.astral.sh/ruff/             (github.com/astral-sh/ruff)
+black            MIT                     https://black.readthedocs.io/            (github.com/psf/black)
+isort            MIT                     https://pycqa.github.io/isort/           (github.com/PyCQA/isort)
+
+Method descriptions implemented from the published literature
+-------------------------------------------------------------
+Errors-in-variables moment correction
+  Fuller, W. A. "Measurement Error Models", Wiley Series in Probability and
+  Statistics (1987). DOI 10.1002/9780470316665. The correction itself is
+  classical and is cited as such; this release contributes only the split-chip
+  identification of the reference assay's own error covariance.
+
+Damped oscillatory state-space recurrence
+  Boyer, J., Rusch, T. K., Rus, D. "Learning to dissipate energy in oscillatory
+  state-space models", arXiv:2505.12171 (2025). DOI 10.48550/arXiv.2505.12171.
+  Rusch, T. K., Rus, D. "Oscillatory state-space models", ICLR 2025 oral,
+  arXiv:2410.03943. DOI 10.48550/arXiv.2410.03943.
+  The implicit-explicit oscillatory discretisation is described in those two
+  reports; the recurrence in src/obscal/twin/oscillatory.py follows their stated
+  second-order form. The damping variant is the ablation row of the manuscript,
+  not a third-party artefact.
+
+Geometric correction factor for transepithelial resistance
+  Yeste, J. et al. "Geometric correction factor for transepithelial electrical
+  resistance measurements in transwell and microfluidic cell cultures",
+  J. Phys. D: Appl. Phys. 49(37):375401 (2016). DOI 10.1088/0022-3727/49/37/375401.
+  Applied as a study-constant correction computed from the printed device
+  geometry; the functional form used here is an explicit engineering default
+  (see the deviations array of claim_to_code.json).
+
+Sirius Red microplate assay format audit
+  Szasz, C. et al. Int. J. Mol. Sci. 24(24):17435 (2023). DOI 10.3390/ijms242417435.
+  Huang, C.-Y., Lin, W.-L. Future Sci. OA 11(1):2567169 (2025).
+  DOI 10.1080/20565623.2025.2567169.
+
+Public resources referenced (data are not redistributed here)
+------------------------------------------------------------
+GEO GSE175396   NCBI Gene Expression Omnibus, public domain deposit,
+                terms of use: https://www.ncbi.nlm.nih.gov/geo/info/disclaimer.html
+                Nawroth, J. C. et al. Cell Reports 36(3):109393 (2021).
+GEO GSE63859    NCBI Gene Expression Omnibus, public domain deposit,
+                terms of use: https://www.ncbi.nlm.nih.gov/geo/info/disclaimer.html
+                Huch, M. et al. Cell 160(1-2):299-312 (2015).
+
+Commercial biological material (identifiers only, no material distributed)
+--------------------------------------------------------------------------
+LX-2 hepatic stellate cells        Merck Millipore SCC064, RRID:CVCL_5792
+Hep G2 hepatocytes                 ATCC HB-8065, RRID:CVCL_0027
+Huh7 hepatocytes                   Sekisui XenoTech JCRB0403
+Bone-marrow-derived stromal cells  ATCC PCS-500-012 (no RRID assigned by the supplier)
+Umbilical-cord-derived stromal cells ATCC PCS-500-010 (no RRID assigned by the supplier)
+Stromal growth medium and kit      ATCC PCS-500-030, ATCC PCS-500-041
+
+Catalogue numbers and accessions point at material and data only. No cell
+line, medium, reagent, tissue or patient material is distributed with this
+release, and no Research Resource Identifier is asserted for an item the
+supplier has not assigned one to.

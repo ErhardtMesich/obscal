@@ -1,0 +1,32 @@
+backbone:
+  # Damped oscillatory state-space recurrence propagated on the elapsed-time
+  # grid. Treatment enters the state equation as an input, never as an appended
+  # observation channel: only a state equation separates what was done to a
+  # culture from what was measured on it.
+  family: damped_oscillatory_state_space
+  latent_state_dimension_deployed: 32
+  dimension_sweep: [8, 16, 32, 64, 128]
+  damping_enabled: true
+  discretisation: implicit_explicit
+  elapsed_time_grid: true
+  treatment_as_state_input: true
+  readout: linear_C
+
+training:
+  learning_rate_deployed: 3.0e-4
+  learning_rate_sweep: [1.0e-4, 3.0e-4, 1.0e-3, 3.0e-3, 1.0e-2]
+  seeds: 5
+  early_stopping_on: validation_loss
+  gradient_norm_window_epochs: 20
+  checkpoint_on: best_validation_loss
+  fit_on: held_in_devices
+  freeze_before_held_out_scoring: true
+  freeze_calibration_before_forecast_layer: true
+
+forecast:
+  issued_from_culture_day: 7
+  horizons_days: [1, 3, 7, 14]
+  interval_source: held_out_calibrated_ensemble_spread
+  native_uncertainty_quantification: false
+  nominal_coverage_levels: [0.80, 0.95]
+  leakage_diagnostic_ratio_threshold: 0.60

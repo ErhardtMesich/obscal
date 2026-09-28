@@ -1,0 +1,27 @@
+inherit: primary.yaml
+run:
+  name: supplementary_artefact_confound
+  kind: supplementary
+  title: Artefact-confound ablation
+  group: C
+  perturbation_family: sensing_environment
+perturbations:
+  - name: reference_configuration
+    manipulated_quantity: all_covariates_modelled
+  - name: medium_swap
+    manipulated_quantity: medium_identical_across_arms
+  - name: temperature_cycle
+    manipulated_quantity: plus_minus_1p5_C_twice_daily
+  - name: perfusion_stop_restart
+    manipulated_quantity: thirty_minute_interruption
+  - name: held_out_geometry
+    manipulated_quantity: channel_height_250_to_400_um
+  - name: without_drift_correction
+    manipulated_quantity: blank_drift_not_subtracted
+  - name: without_bubble_exclusion
+    manipulated_quantity: bubble_events_retained
+  - name: without_artefact_covariates
+    manipulated_quantity: all_Gamma_removed
+  - name: cell_free_channel_alone
+    manipulated_quantity: biology_removed
+reports: [matrix_rmse_on_held_out_chips, delta_vs_reference, cell_free_label_auc]

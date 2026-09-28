@@ -1,0 +1,12 @@
+inherit: primary.yaml
+run:
+  name: ablation_fixed_schedule
+  kind: ablation
+  title: Without D-optimal allocation
+  component_removed: d_optimal_exchange_search
+  substitute: fixed_six_timepoint_clock
+  diagnostic: parity_at_the_full_budget
+toggles:
+  d_optimal_allocation: false
+allocation:
+  policies: [fixed_schedule, clairvoyant_oracle]

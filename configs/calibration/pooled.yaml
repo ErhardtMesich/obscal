@@ -1,0 +1,62 @@
+pooled_fit:
+  # One pooled, locally linear regression. Time enters as a covariate and as an
+  # interaction; the fit is never assembled slice by slice.
+  feature_dimension_p: 5
+  biological_calibration_devices: 116
+  held_out_devices: 32
+  biological_block_devices: 148
+  design_blocks: [biological, acellular_ladder, seeding_density_ladder]
+  full_design_devices: 192
+  design_columns:
+    - intercept
+    - time_basis
+    - state_centred
+    - coverage_centred
+    - nuisance_covariates
+    - state_by_time
+  residual_covariance_estimated_on: biological_rows
+  residual_covariance_pooled_across: treatment_strata
+  strata: treatment_stratum
+  covariance_inflation: plugin
+  refit_interval_r_terms: 8
+
+attenuation:
+  # Classical errors-in-variables model. The correction is cited, not claimed;
+  # what the design contributes is a measured matrix entry of Sigma_u.
+  correction: fuller_moment
+  axes: [activation, matrix]
+  precondition: sww_minus_sigma_u_positive_definite
+  on_precondition_failure: report_attenuated_slope_with_failed_precondition
+  design_spread_grid_cv: [0.40, 0.55, 0.80, 1.50]
+  design_point_cv: 0.55
+  design_assay_cv:
+    # Design-time analytical coefficients the Panel A ladder is computed at,
+    # derived so lambda = CV_design^2 / (CV_design^2 + CV_assay^2) reproduces the
+    # printed factor at the design point; the other three rows of each column are
+    # then predicted and checked rather than fitted.
+    matrix_area_only: 0.4125
+    matrix_area_split: 0.2921
+    matrix_hyp_split: 0.1622
+    activation_qpcr_only: 0.2664
+    activation_split: 0.1900
+    acellular_ladder: 0.0000
+  report_lambda_per_axis: true
+
+identifiability_audit:
+  # Run before any slope is reported.
+  variance_inflation_factor: true
+  condition_number: true
+  standardise_each_axis_in_own_unit: true
+  if_acellular_ladder_contributes_no_rows: declare_jointly_unidentified
+  cascade_directional_derivative_reported: true
+
+bootstrap:
+  replicates: 2000
+  statistic: corrected_matrix_slope
+  resample_unit: device
+  strata_preserved: true
+
+time_basis:
+  kind: smooth_basis
+  basis_columns: 3
+  centred_at_block_mean: true

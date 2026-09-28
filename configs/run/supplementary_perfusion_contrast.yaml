@@ -1,0 +1,20 @@
+inherit: primary.yaml
+run:
+  name: supplementary_perfusion_contrast
+  kind: supplementary
+  title: Perfused against static culture on the deposited-matrix endpoint
+  group: D
+paired_arms:
+  - arm: S2
+    culture_days: [14, 21]
+  - arm: S4
+    culture_days: [14, 21]
+convention:
+  dispersion: mean_plus_minus_sd
+  test: mann_whitney
+  delta_unit: percent_of_static_mean
+instrument_economics:
+  metric: detectability_per_chip_day
+  unit: ug_hydroxyproline_equivalent_per_chip_day
+  blank_drift_unit: ohm_cm2_per_day
+  ratio_reference: perfused

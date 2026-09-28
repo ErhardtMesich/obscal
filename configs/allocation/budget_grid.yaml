@@ -1,0 +1,55 @@
+criterion:
+  # A determinant is invariant under linear reparameterisation of the state and
+  # an eigenvalue is not, so the allocation maximises log det M under a device
+  # budget counted in destroyed units.
+  kind: d_optimal
+  objective: log_determinant_information
+  weight: inverse_residual_covariance
+  weighted_by_current_attenuation: true
+  reparameterisation_invariant: true
+  constraint: devices_terminated
+
+core:
+  # The pre-specified core is filled to its replication floor before any
+  # adaptive gain is evaluated, so the allocator spends surplus devices only.
+  replication_floor_primary_contrast: 12
+  replication_floor_supporting_timepoint: 4
+  adaptive_spend_before_core_complete: false
+
+budget_grid:
+  budget_fractions: [0.16, 0.32, 0.49, 0.65, 0.81, 1.00]
+  budget_axis: devices_consumed_from_biological_block
+  block_devices: 148
+  delivered_pooled_fit_devices: 116
+  grid_spacing_devices: 24
+
+policies:
+  - d_optimal
+  - fixed_schedule
+  - random_matched_rate
+  - prior_art_allocator
+  - clairvoyant_oracle
+random_matched_rate:
+  seeds: 200
+  matched_rate: true
+  percentile_band: [10, 90]
+fixed_schedule:
+  timepoints: 6
+prior_art_allocator:
+  reimplemented: true
+  reference: raman_guided_subset_selection
+clairvoyant_oracle:
+  access: full_future_trajectory
+  role: ceiling
+
+structural_checks:
+  convergence_at_full_budget: true
+  non_crossing_above_oracle: true
+  oracle_is_not_a_competitor: true
+  report_curve_not_bare_percentage: true
+
+operating_point:
+  # The only place a saving is named.
+  matched_corrected_rse: 0.20
+  interpolate_between_measured_budget_points: true
+  report_counts_and_fractions: true

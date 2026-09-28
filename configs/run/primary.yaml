@@ -1,0 +1,41 @@
+run:
+  name: primary
+  kind: primary
+  # The delivered system: pooled 116-device calibration with both decoupling
+  # ladder arms, the moment correction, the two-axis state, and the damped
+  # oscillatory twin consuming the calibrated front end.
+  title: ObsCal delivered configuration
+
+modules: [chip, frontend, calibration, terminal, power, allocation, twin, evaluation]
+
+toggles:
+  multi_frequency_front_end: true
+  substrate_integrated_electrodes: true
+  coverage_covariate: true
+  split_chip_replication: true
+  decoupling_ladders: true
+  artefact_confound_channel: true
+  treatment_stratified_calibration: true
+  errors_in_variables_correction: true
+  d_optimal_allocation: true
+  two_axis_state: true
+  damping: true
+  commanded_flow_step_excitation: true
+  perfusion: true
+
+sampler: null
+
+analyses:
+  - name: calibration
+    axes: [activation, matrix]
+    report: [naive_slope, corrected_slope, lambda, standard_error, ci, p_value]
+  - name: detectability
+    replication: [3, 4, 6, 12, 16, 24]
+    units: [ug_hydroxyproline_per_chip, percent_collagen_proportionate_area, acta2_fold_change]
+  - name: allocation_curve
+    budget_fractions: [0.16, 0.32, 0.49, 0.65, 0.81, 1.00]
+  - name: forecast_ladder
+    axes: [activation, matrix]
+    horizons_days: [1, 3, 7, 14]
+
+seed: 20260928

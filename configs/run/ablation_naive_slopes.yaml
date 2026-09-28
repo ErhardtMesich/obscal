@@ -1,0 +1,12 @@
+inherit: primary.yaml
+run:
+  name: ablation_naive_slopes
+  kind: ablation
+  title: Without the errors-in-variables correction
+  component_removed: moment_correction
+  substitute: naive_slopes_reported
+  diagnostic: apparent_precision_improves_while_the_slope_stays_attenuated
+toggles:
+  errors_in_variables_correction: false
+calibration:
+  correction: none

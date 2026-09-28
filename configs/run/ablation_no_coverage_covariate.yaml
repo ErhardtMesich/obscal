@@ -1,0 +1,10 @@
+inherit: primary.yaml
+run:
+  name: ablation_no_coverage_covariate
+  kind: ablation
+  title: Without the coverage covariate
+  component_removed: measured_coverage_regressor
+  substitute: coverage_omitted_from_regression
+  diagnostic: coverage_arrives_inside_the_matrix_term
+toggles:
+  coverage_covariate: false

@@ -1,0 +1,146 @@
+cohort:
+  # Harness cohort. The article does not deposit per-device rows, so the release
+  # executes the pipeline on a schema-compatible device pool produced by this
+  # specification. None of the values below is a manuscript measurement, and no
+  # manuscript table value is claimed from the numbers this pool yields.
+  provenance: schema_compatible_device_pool
+  seed: 20260928
+
+pool:
+  devices_total: 260
+  batches: 3
+  operators: 2
+  biological_devices: 148
+  acellular_devices: 24
+  coverage_devices: 20
+  cell_free_devices: 8
+  held_out_geometry_devices: 12
+  cross_line_devices: 12
+  static_counterpart_devices: 36
+  reservoirs: 8
+
+series:
+  first_culture_day: 3.0
+  step_days: 0.5
+  injury_start_day: 3.0
+  treatment_start_day: 7.0
+
+trajectory:
+  # The pool's own state dynamics, chosen so the two axes dissociate the way the
+  # platform's biology does, without reusing any printed sensitivity or spread.
+  activation_baseline_fold: 0.75
+  activation_injury_rise_per_day: 0.165
+  activation_injury_ceiling_fold: 2.95
+  activation_treated_decay_per_day: 0.022
+  matrix_baseline_ug: 0.60
+  matrix_deposition_per_day: 0.086
+  matrix_threshold_fold: 0.90
+  matrix_turnover_per_day: 0.010
+  device_deviation_activation_fold: 0.140
+  device_deviation_matrix_ug: 0.550
+  cell_only_matrix_offset_ug: 0.37
+  static_matrix_factor: 0.90
+  cross_source_matrix_factor: 1.04
+  cross_line_matrix_factor: 0.93
+  lower_dose_activation_factor: 0.86
+
+front_end:
+  # Forward model from the state to the five sensor features, in standardised
+  # state units. These are the pool's true sensitivities and the execution pass
+  # checks that the pooled calibration recovers them.
+  state_scale:
+    # Fixed centring constants, so a generating sensitivity is defined on one
+    # scale across the whole pool rather than device by device.
+    activation_centre: 1.550
+    activation_spread: 0.780
+    matrix_centre: 1.320
+    matrix_spread: 0.760
+    coverage_centre: 88.0
+    coverage_spread: 3.4
+  intercept:
+    log_rb: 4.1000
+    log_cm: -15.0000
+    alpha: 0.8200
+    matrix_texture: 5.0000
+    effluent_pro_collagen: 30.00
+  sensitivity_activation:
+    log_rb: 0.2600
+    log_cm: -0.0300
+    alpha: -0.0210
+    matrix_texture: 1.1500
+    effluent_pro_collagen: 5.8000
+  sensitivity_matrix:
+    log_rb: 0.5200
+    log_cm: -0.0180
+    alpha: -0.0300
+    matrix_texture: 2.5500
+    effluent_pro_collagen: 1.7000
+  sensitivity_coverage:
+    log_rb: 0.8800
+    log_cm: -0.0800
+    alpha: -0.0500
+    matrix_texture: 0.6800
+    effluent_pro_collagen: 0.4500
+  feature_noise_sd:
+    log_rb: 0.0500
+    log_cm: 0.0040
+    alpha: 0.0090
+    matrix_texture: 0.3800
+    effluent_pro_collagen: 1.2000
+  coverage:
+    mean_percent: 88.0
+    sd_percent: 3.4
+    ladder_levels: [78.0, 83.0, 88.0, 93.0, 97.0]
+  texture_unit: dimensionless_x1e-3
+
+state_estimate:
+  # Per-chip standard deviation of the calibrated front end's state estimate.
+  matrix_sd_ug: 0.78
+  activation_sd_fold: 0.310
+
+terminal:
+  hydroxyproline:
+    single_half_read_error_ug: 0.520
+    mean_ug: 2.140
+  collagen_area:
+    percent_per_ug: 2.110
+    operator_bias_percent: 0.060
+    operator_sd_percent: 0.420
+  activation:
+    read_error_fold: 0.190
+  col1a1:
+    ratio_to_acta2: 0.910
+    noise_sd_fold: 0.230
+  function:
+    albumin_base: 150.0
+    albumin_injury_slope: -6.2
+    albumin_noise_sd: 21.0
+    urea_base: 4.30
+    urea_injury_slope: -0.070
+    urea_noise_sd: 0.75
+
+nuisance:
+  temperature_mean_c: 37.0
+  temperature_sd_c: 0.35
+  medium_change_count_mean: 6.0
+  hours_since_wetting_mean: 120.0
+  hours_since_wetting_sd: 24.0
+  drift_ohm_per_day_mean: 4.4
+  drift_ohm_per_day_sd: 3.1
+  medium_exchange_step_ohm_mean: 18.0
+  medium_exchange_step_ohm_sd: 7.5
+  excitation_offset_percent: -5.1
+
+circuit:
+  extracellular_resistance_ohm: 180.0
+  series_resistance_ohm: 120.0
+  barrier_resistance_percent_per_sd: 12.0
+  capacitance_percent_per_sd: -7.0
+  geometry_baseline_shift_percent: 20.0
+
+external:
+  anchor_genes_total: 123
+  anchor_genes_recovered: 74
+  organoid_module_ratio: 1.55
+  organoid_module_ratio_sd: 0.21
+  organoid_arm_ranking: [S1, S4, S5, S2]

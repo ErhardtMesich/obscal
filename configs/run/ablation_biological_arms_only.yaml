@@ -1,0 +1,12 @@
+inherit: primary.yaml
+run:
+  name: ablation_biological_arms_only
+  kind: ablation
+  title: Without the decoupling ladders
+  component_removed: acellular_and_seeding_density_ladders
+  substitute: biological_arms_only
+  diagnostic: rank_deficient_in_practice_matrix_interval_contains_zero
+toggles:
+  decoupling_ladders: false
+strata:
+  design_blocks: [biological]
